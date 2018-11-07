@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import models.modelMain;
 /**
  *
  * @author Sebastián
  */
 public class pane_model_employee {
-    private Connection conexion;
+  
     private Statement st;
     private ResultSet rs;
     
@@ -24,6 +25,7 @@ public class pane_model_employee {
     private String cp;
     private String banco;
 
+    modelMain modelmain;
     /**
      * @return the nombre
      */
@@ -136,19 +138,7 @@ public class pane_model_employee {
         this.banco = banco;
     }
     
-      public void conectarDB() {
-        try {
-            conexion = DriverManager.getConnection("");
-            st = conexion.createStatement();
-            String sql = "SELECT * FROM empleados;";
-            System.out.println(sql);
-            rs = st.executeQuery(sql);
-            rs.next();
-            setValues();
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "Error ModelAgenda 001: " + err.getMessage());
-        }
-    }
+   
 
     private void setValues() {
       try {
@@ -192,7 +182,7 @@ public class pane_model_employee {
             st.executeQuery("INSERT INTO empleados(nombre,apellido_paterno,apellido_materno,calle,ciudad,edo,cp,banco)"
                     + "VALUES"+"('"+nombre+"','"
                     +ap_paterno+"','"+ap_materno+"','"+calle+"','"+ciudad+"','"+edo+"','"+cp+"','"+banco+"');");
-            this.conectarDB();
+            modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
@@ -202,7 +192,7 @@ public class pane_model_employee {
              try{
             st.executeQuery("INSERT INTO empleados(nombre,apellido_paterno,apellido_materno,calle,ciudad,edo,cp,banco)VALUES"+"('"+nombre+"','"
                     +ap_paterno+"','"+ap_materno+"','"+calle+"','"+ciudad+"','"+edo+"','"+cp+"','"+banco+"');");
-            this.conectarDB();
+            modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
@@ -220,7 +210,7 @@ public class pane_model_employee {
             String actualBank=this.getBanco();
             
             st.executeQuery("UPDATE empleados SET nombre='"+nombre+"',apellido_paterno='"+ap_paterno+"',apellido_materno='"+ap_materno+"',calle='"+calle+"',ciudad='"+ciudad+"',edo='"+edo+"',cp='"+cp+"',banco='"+banco+"'WHERE name='"+actualName+"',ap_paterno='"+actualFirstName+"',ap_materno='"+actualLastName+"',calle='"+actualStreet+"',city='"+actualCity+"',edo='"+actualState+"',cp='"+actualPC+"',banco='"+actualBank+"';");
-            this.conectarDB();
+            modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
@@ -229,7 +219,7 @@ public class pane_model_employee {
     public void deleteRegister(){
            try{
             st.executeUpdate("DELETE FROM empleados WHERE name='"+nombre+"',ap_paterno='"+ap_paterno+"',ap_materno='"+ap_materno+"',calle='"+calle+"',city='"+ciudad+"',edo='"+edo+"',cp='"+cp+"',banco='"+banco+"';");
-            this.conectarDB();
+            modelmain.conectarDB();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error model:"+ex.getMessage());
         }

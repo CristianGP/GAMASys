@@ -2,6 +2,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.pane_model_employee;
+import models.modelMain;
 import views.pane_view_employee;
 /**
  *
@@ -11,6 +12,7 @@ import views.pane_view_employee;
     public pane_controller_employee c_employee;
     public pane_model_employee m_employee;
     public pane_view_employee v_employee;
+    public modelMain modelmain;
     
     ActionListener actionListener =  new ActionListener() {
         @Override
@@ -41,7 +43,7 @@ import views.pane_view_employee;
     }   
 
     private void initDB() {
-        m_employee.conectarDB();
+        modelmain.conectarDB();
         v_employee.jtf_nombre.setText(m_employee.getNombre());
         v_employee.jtf_ap_paterno.setText(m_employee.getAp_paterno());
         v_employee.jtf_ap_materno.setText(m_employee.getAp_materno());
