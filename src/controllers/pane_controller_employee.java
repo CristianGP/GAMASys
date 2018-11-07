@@ -8,7 +8,7 @@ import views.pane_view_employee;
  * @author Sebastián
  */
     public class pane_controller_employee {
-    
+    public pane_controller_employee c_employee;
     public pane_model_employee m_employee;
     public pane_view_employee v_employee;
     
