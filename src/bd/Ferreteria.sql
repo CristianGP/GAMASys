@@ -30,6 +30,9 @@ email varchar(50)not null);
 
 create table empleados(
 id_empleado int(10) auto_increment primary key,
+nombre_empleado char(15) not null,
+ap_paterno char (15)not null,
+ap_materno char (15)not null,
 numero_cuenta int(20) not null,
 numero_seguro varchar(20) not null,
 banco char(20) not null,
@@ -39,6 +42,7 @@ calle char(30) not null,
 colonia char(15) not null,
 estado char(15) not null,
 ciudad char(15) not null,
+cp int(5)not null,
 tipo_empleado char(25) not null,
 usuario varchar(30) not null,
 password varchar(30) not null,

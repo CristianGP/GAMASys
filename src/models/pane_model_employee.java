@@ -3,6 +3,7 @@ package models;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -15,7 +16,7 @@ public class pane_model_employee {
   
     private Statement st;
     private ResultSet rs;
-    
+    private PreparedStatement ps;
     private String nombre;
     private String ap_paterno;
     private String ap_materno;
@@ -23,8 +24,14 @@ public class pane_model_employee {
     private String ciudad;
     private String edo;
     private String cp;
+    private String colonia;
     private String banco;
-
+    private Integer no_cuenta;
+    private String no_seguro;
+    private String curp;
+    private Integer telefono;
+    private String tipo_empleado;
+    
     modelMain modelmain;
     /**
      * @return the nombre
@@ -138,18 +145,109 @@ public class pane_model_employee {
         this.banco = banco;
     }
     
+    /**
+     * @param no_cuenta the no_cuenta to set
+     */
+    public void setNo_cuenta(Integer no_cuenta) {
+        this.no_cuenta = no_cuenta;
+    }
+
+    /**
+     * @return the no_seguro
+     */
+    public String getNo_seguro() {
+        return no_seguro;
+    }
+
+    /**
+     * @param no_seguro the no_seguro to set
+     */
+    public void setNo_seguro(String no_seguro) {
+        this.no_seguro = no_seguro;
+    }
    
+    /**
+     * @return the no_cuenta
+     */
+    public Integer getNo_cuenta() {
+        return no_cuenta;
+    }
+
+    /**
+     * @return the colonia
+     */
+    public String getColonia() {
+        return colonia;
+    }
+
+    /**
+     * @param colonia the colonia to set
+     */
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
+    }
+
+    /**
+     * @return the curp
+     */
+    public String getCurp() {
+        return curp;
+    }
+
+    /**
+     * @param curp the curp to set
+     */
+    public void setCurp(String curp) {
+        this.curp = curp;
+    }
+
+    /**
+     * @return the telefono
+     */
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
+    /**
+     * @return the tipo_empleado
+     */
+    public String getTipo_empleado() {
+        return tipo_empleado;
+    }
+
+    /**
+     * @param tipo_empleado the tipo_empleado to set
+     */
+    public void setTipo_empleado(String tipo_empleado) {
+        this.tipo_empleado = tipo_empleado;
+    }
 
     private void setValues() {
       try {
-            nombre = rs.getString("nombre");
-            ap_paterno = rs.getString("Apellido paterno");
-            ap_materno = rs.getString("Apellido materno");
-            calle = rs.getString("calle");
-            ciudad = rs.getString("ciudad");
-            edo = rs.getString("estado");
-            cp = rs.getString("cp");
+            nombre = rs.getString("nombre_empleado");
+            ap_paterno = rs.getString("ap_paterno");
+            ap_materno = rs.getString("ap_materno");
+            no_cuenta=rs.getInt("numero_cuenta");
+            no_seguro=rs.getString("numero_seguro");
             banco = rs.getString("banco");
+            curp =rs.getString("curp");
+            telefono = rs.getInt("telefono");
+            calle = rs.getString("calle");
+            colonia=rs.getString("colonia");
+            edo = rs.getString("estado");
+            ciudad = rs.getString("ciudad");
+            cp = rs.getString("cp");
+            tipo_empleado=rs.getString("tipo_empleado");
+            
+           
+            
         } catch (SQLException err) {
             JOptionPane.showMessageDialog(null, "Error model 102: " + err.getMessage());
 
@@ -179,9 +277,8 @@ public class pane_model_employee {
     
     public void newRegister(){
         try{
-            st.executeQuery("INSERT INTO empleados(nombre,apellido_paterno,apellido_materno,calle,ciudad,edo,cp,banco)"
-                    + "VALUES"+"('"+nombre+"','"
-                    +ap_paterno+"','"+ap_materno+"','"+calle+"','"+ciudad+"','"+edo+"','"+cp+"','"+banco+"');");
+            ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado) "
+                    + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
             modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
@@ -190,8 +287,8 @@ public class pane_model_employee {
     
     public void insertRegister(){
              try{
-            st.executeQuery("INSERT INTO empleados(nombre,apellido_paterno,apellido_materno,calle,ciudad,edo,cp,banco)VALUES"+"('"+nombre+"','"
-                    +ap_paterno+"','"+ap_materno+"','"+calle+"','"+ciudad+"','"+edo+"','"+cp+"','"+banco+"');");
+            ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado)"
+                    + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
             modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
@@ -203,13 +300,21 @@ public class pane_model_employee {
             String actualName= this.getNombre();
             String actualFirstName=this.getAp_paterno();
             String actualLastName=this.getAp_materno();
-            String actualStreet=this.getCalle();
-            String actualCity=this.getCiudad();
-            String actualState=this.getEdo();
-            String actualPC=this.getCp();
+            Integer actualCountNumber=this.getNo_cuenta();
+            String actualSecureNumber=this.getNo_seguro();
             String actualBank=this.getBanco();
+            String actualCurp=this.getCurp();
+            Integer actualPhone=this.getTelefono();
+            String actualStreet=this.getCalle();
+            String actualColony=this.getColonia();
+            String actualState=this.getEdo();
+            String actualCity=this.getCiudad();           
+            String actualPC=this.getCp();
+            String actualType=this.getTipo_empleado();
             
-            st.executeQuery("UPDATE empleados SET nombre='"+nombre+"',apellido_paterno='"+ap_paterno+"',apellido_materno='"+ap_materno+"',calle='"+calle+"',ciudad='"+ciudad+"',edo='"+edo+"',cp='"+cp+"',banco='"+banco+"'WHERE name='"+actualName+"',ap_paterno='"+actualFirstName+"',ap_materno='"+actualLastName+"',calle='"+actualStreet+"',city='"+actualCity+"',edo='"+actualState+"',cp='"+actualPC+"',banco='"+actualBank+"';");
+            
+            ps.executeQuery("UPDATE empleados SET nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?,"
+                    + "WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
             modelmain.conectarDB();
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
@@ -218,10 +323,13 @@ public class pane_model_employee {
     
     public void deleteRegister(){
            try{
-            st.executeUpdate("DELETE FROM empleados WHERE name='"+nombre+"',ap_paterno='"+ap_paterno+"',ap_materno='"+ap_materno+"',calle='"+calle+"',city='"+ciudad+"',edo='"+edo+"',cp='"+cp+"',banco='"+banco+"';");
+            ps.executeUpdate("DELETE FROM empleados WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
             modelmain.conectarDB();
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error model:"+ex.getMessage());
         }
     }
+
+    
+    
 }
