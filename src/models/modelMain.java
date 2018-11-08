@@ -5,37 +5,38 @@
  */
 package models;
 
-import java.sql.Connection;
+import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author VICTOR MANUEL ARANDA
  */
 public class modelMain {
-    private Connection conexion;
-    private Statement st;
-    private ResultSet rs;
+   private final String base = "sistematienda";
+    private final String user = "root";
+    private final String password = "";
+    private final String url = "jdbc:mysql://localhost:3306/"+base;
+    Connection con = null;
     
     
-     public void conectarDB() {
+     public Connection conectarDB() {
         try {
-            conexion = DriverManager.getConnection("");
-            st = conexion.createStatement();
-            String sql = "SELECT * FROM empleados;";
-            System.out.println(sql);
-            rs = st.executeQuery(sql);
-            rs.next();
-           
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "Error ModelAgenda 001: " + err.getMessage());
+            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                con =  (Connection) DriverManager.getConnection(url, user, password);
+                System.out.println("CONEXION ESTABLECIDA A LA BASE DE DATOS");
+            } catch (SQLException ex) {
+                Logger.getLogger(modelMain.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("ERROR AL CONECTAR A LA BASE DE DATOS"+ex);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(modelMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return con;
     }
-
-   
-   
+    
 }
