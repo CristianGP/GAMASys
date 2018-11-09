@@ -204,18 +204,18 @@ public class pane_view_supplier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JButton jb_add;
-    private javax.swing.JButton jb_delete;
-    private javax.swing.JButton jb_modify;
-    private javax.swing.JButton jb_new;
-    private javax.swing.JButton jb_search;
-    private javax.swing.JComboBox<String> jcb_search;
-    private javax.swing.JTextField jtf_city;
-    private javax.swing.JTextField jtf_name;
-    private javax.swing.JTextField jtf_pc;
-    private javax.swing.JTextField jtf_phone;
-    private javax.swing.JTextField jtf_state;
-    private javax.swing.JTextField jtf_street;
+    public javax.swing.JButton jb_delete;
+    public javax.swing.JButton jb_modify;
+    public javax.swing.JButton jb_new;
+    public javax.swing.JButton jb_search;
+    public javax.swing.JComboBox<String> jcb_search;
+    public javax.swing.JTextField jtf_city;
+    public javax.swing.JTextField jtf_name;
+    public javax.swing.JTextField jtf_pc;
+    public javax.swing.JTextField jtf_phone;
+    public javax.swing.JTextField jtf_state;
+    public javax.swing.JTextField jtf_street;
     // End of variables declaration//GEN-END:variables
 }
