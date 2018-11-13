@@ -1,23 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controllers;
 
+package controllers;
+import models.*;
+import views.*;
 /**
  *
  * @author ManuelAlonsoMH
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import views.pane_view_customers;
-import models.pane_model_customers;
+import javax.swing.JFrame;
 
 public class pane_controller_customers implements ActionListener{
 
+    JFrame vistaCrud = new JFrame();
+    Customers modeloCrud = new Customers();
     
-    @Override
+    public pane_controller_customers(JFrame vistaCrud, Customers modeloCrud){
+        this.modeloCrud = modeloCrud;
+    }
+    
     public void actionPerformed(ActionEvent e) {
         
     }

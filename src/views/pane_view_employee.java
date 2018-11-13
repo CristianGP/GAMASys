@@ -130,7 +130,7 @@ public class pane_view_employee extends javax.swing.JPanel {
 
         jb_prev.setText("<<");
 
-        jp_crud.setBackground(new java.awt.Color(255, 153, 0));
+        jp_crud.setBackground(new java.awt.Color(255, 102, 0));
         jp_crud.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_crud.setForeground(new java.awt.Color(255, 102, 0));
 
