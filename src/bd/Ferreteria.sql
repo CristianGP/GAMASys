@@ -49,14 +49,14 @@ password varchar(30) not null,
 id_sucursal int(11) not null,
 foreign key (id_sucursal) references sucursales(id_sucursal));
 
-create table provedores(
-rfc  int(10) auto_increment primary key,
-nombre_provedor char(15) not null,
-telefono int(10) not null,
-calle char(30) not null,
-colonia char(15) not null,
-estado char(15) not null,
-ciudad char(15) not null);
+create table proveedores(
+id_prov  int auto_increment primary key,
+nombre_prov char(15) not null,
+telefono_prov int(10) not null,
+calle_prov char(30) not null,
+colonia_prov char(15) not null,
+ciudad_prov char(15) not null,
+estado_prov char(15) not null);
 
 create table productos(
 id_producto int(10) auto_increment primary key,
