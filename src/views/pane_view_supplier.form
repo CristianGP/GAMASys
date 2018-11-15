@@ -296,7 +296,7 @@
                 <StringItem index="0" value="Nombre"/>
                 <StringItem index="1" value="Tel&#xe9;fono"/>
                 <StringItem index="2" value="Calle"/>
-                <StringItem index="3" value="C&#xf3;digo Postal Ciudad"/>
+                <StringItem index="3" value="Ciudad"/>
                 <StringItem index="4" value="Estado"/>
               </StringArray>
             </Property>

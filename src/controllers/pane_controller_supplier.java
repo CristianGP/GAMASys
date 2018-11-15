@@ -7,7 +7,7 @@ package controllers;
 
 /**
  *
- * @author Isaías
+ * @author Isaías 
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,7 +56,24 @@ public class pane_controller_supplier implements ActionListener{
             newSupplier();
         }
         else if (e.getSource() == view_supplier.jb_search){
-            searchSupplier();
+           if (view_supplier.jcb_search.getSelectedItem() == "Nombre"){
+               searchByName();
+           }            
+           else if (view_supplier.jcb_search.getSelectedItem() == "Calle"){
+               searchByStreet();
+           }
+           else if (view_supplier.jcb_search.getSelectedItem() == "Código Postal"){
+               searchByColony();
+           }
+           else if (view_supplier.jcb_search.getSelectedItem() == "Teléfono"){
+               searchByPhone();
+           }
+           else if (view_supplier.jcb_search.getSelectedItem() == "Estado"){
+               searchByState();
+           }
+           else if (view_supplier.jcb_search.getSelectedItem() == "Ciudad"){
+               searchByCity();
+           }
         }
     }
     /*
@@ -198,13 +215,6 @@ public class pane_controller_supplier implements ActionListener{
         view_supplier.jtf_search.setText("");
     }
     /*
-        Método para buscar un proveedor, toma lo que esté seleccionado en el ComboBox,
-        después lee lo que está en la caja de texto y lo muestra en la tabla
-    */
-    private void searchSupplier() {
-        
-    }
-    /*
         Método para eliminar al proveedor selccionado en la tabla.
     */
     private void deleteSupplier() {
@@ -241,12 +251,12 @@ public class pane_controller_supplier implements ActionListener{
             ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
-                registros[0]=rs.getString("nombre_proveedor");
-                registros[1]=rs.getString("telefono");
-                registros[2]=rs.getString("calle");
-                registros[3]=rs.getString("colonia");
-                registros[4]=rs.getString("ciudad");
-                registros[5]=rs.getString("estado");
+                registros[0]=rs.getString("nombre_prov");
+                registros[1]=rs.getString("telefono_prov");
+                registros[2]=rs.getString("calle_prov");
+                registros[3]=rs.getString("colonia_prov");
+                registros[4]=rs.getString("ciudad_prov");
+                registros[5]=rs.getString("estado_prov");
                 model.addRow(registros);
                 
             }
@@ -254,6 +264,102 @@ public class pane_controller_supplier implements ActionListener{
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo importar la tabla");
+        }
+    }
+    /*
+        Método para buscar un proveedor por nombre, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByName() {
+        try{
+            String search_by_name = ("SELECT * FROM proveedores WHERE nombre_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_name);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    /*
+        Método para buscar un proveedor por calle, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByStreet() {
+        try{
+            String search_by_street = ("SELECT * FROM proveedores WHERE calle_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_street);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    /*
+        Método para buscar un proveedor por código postal, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByColony() {
+        try{
+            String search_by_colony = ("SELECT * FROM proveedores WHERE colonia_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_colony);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    /*
+        Método para buscar un proveedor por teléfono, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByPhone() {
+        try{
+            String search_by_phone = ("SELECT * FROM proveedores WHERE telefono_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_phone);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    /*
+        Método para buscar un proveedor por estado, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByState() {
+        try{
+            String search_by_state = ("SELECT * FROM proveedores WHERE estado_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_state);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    /*
+        Método para buscar un proveedor por ciudad, hace una sentencia de sql y muestra los datos en
+        la tabla
+    */
+    private void searchByCity() {
+        try{
+            String search_by_city = ("SELECT * FROM proveedores WHERE ciudad_prov LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            pst = (PreparedStatement) con.prepareStatement(search_by_city);
+            pst.setString(1, view_supplier.jtf_search.getText());
+            pst.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
         }
     }
 }
