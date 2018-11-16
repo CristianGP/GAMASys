@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author VICTOR MANUEL ARANDA
  */
 public class modelMain {
-<<<<<<< HEAD
+
 
     private final String base = "Ferreteria";
     private final String user = "root";

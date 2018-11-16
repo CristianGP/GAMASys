@@ -7,6 +7,7 @@ package models;
 
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class pane_model_products extends Conexion {
 
@@ -17,7 +18,7 @@ public class pane_model_products extends Conexion {
     private Double precio_venta;
     private int sku;
     private int lote;
-    private String fecha_entrada;
+   
 
     public int getId_producto() {
         return id_producto;
@@ -75,19 +76,13 @@ public class pane_model_products extends Conexion {
         this.lote = lote;
     }
 
-    public String getFecha_entrada() {
-        return fecha_entrada;
-    }
 
-    public void setFecha_entrada(String fecha_entrada) {
-        this.fecha_entrada = fecha_entrada;
-    }
 
     public boolean registrar() {
         PreparedStatement ps = null;
         Connection con = getConexion();
 
-        String sql = "INSERT INTO productos (nombre_producto,tipo_producto,marca,precio_venta,sku,lote,fecha_entrada) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO productos (nombre_producto,tipo_producto,marca,precio_venta,sku,lote) VALUES (?,?,?,?,?,?)";
 
         try {
             ps = con.prepareStatement(sql);
@@ -97,7 +92,6 @@ public class pane_model_products extends Conexion {
             ps.setDouble(4, getPrecio_venta());
             ps.setInt(5, getSku());
             ps.setInt(6, getLote());
-            ps.setString(7, getFecha_entrada());
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -127,7 +121,6 @@ public class pane_model_products extends Conexion {
             ps.setDouble(4, getPrecio_venta());
             ps.setInt(5, getSku());
             ps.setInt(6, getLote());
-            ps.setString(7, getFecha_entrada());
             ps.setInt(8, getId_producto());
             ps.execute();
             return true;
@@ -158,10 +151,44 @@ public class pane_model_products extends Conexion {
             ps.setDouble(4, getPrecio_venta());
             ps.setInt(5, getSku());
             ps.setInt(6, getLote());
-            ps.setString(7, getFecha_entrada());
             ps.setInt(8, getId_producto());
             ps.execute();
             return true;
+        } catch (Exception e) {
+            System.err.println(e);
+            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+
+    }
+     public boolean buscar() {
+        PreparedStatement ps = null;
+        Connection con = getConexion();
+         ResultSet rs = null;
+
+        String sql = "DELATE FROM productos  WHERE =nombre_producto";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, getNombre_producto());
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                setId_producto(Integer.parseInt(rs.getString("id_producto")));
+                setNombre_producto(rs.getString("nombre_producto"));
+                setTipo_producto(rs.getString("tipo_producto"));
+                setMarca((rs.getString("marca")));
+                setPrecio_venta(Double.parseDouble(rs.getString("precio_venta")));
+                setSku(Integer.parseInt(rs.getString("sku")));
+                setLote(Integer.parseInt(rs.getString("lote")));
+               return true;
+            }
+            return false;
         } catch (Exception e) {
             System.err.println(e);
             return false;
