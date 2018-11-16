@@ -11,4 +11,8 @@ package controllers;
  */
 public class controllerMain {
     
+    private Object controllers[];
+    
+    private pane_controller_products control_productos;
+   
 }

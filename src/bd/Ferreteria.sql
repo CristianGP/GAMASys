@@ -62,7 +62,8 @@ marca char(25) not null,
 precio_venta int(20) not null,
 sku int(20) not null,
 lote int(20) not null,
-fecha_entrada datetime not null);
+fecha_entrada timestamp not null);
+
 
 
 create table compras(
