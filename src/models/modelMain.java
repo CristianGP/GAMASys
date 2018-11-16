@@ -5,17 +5,19 @@
  */
 package models;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author VICTOR MANUEL ARANDA
  */
 public class modelMain {
+<<<<<<< HEAD
 
     private final String base = "Ferreteria";
     private final String user = "root";
@@ -35,8 +37,30 @@ public class modelMain {
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(modelMain.class.getName()).log(Level.SEVERE, null, ex);
+=======
+    private Connection conexion;
+    private Statement st;
+    private ResultSet rs;
+    
+    
+     public void conectarDB() {
+        try {
+            conexion = DriverManager.getConnection("");
+            st = conexion.createStatement();
+            String sql = "SELECT * FROM empleados;";
+            System.out.println(sql);
+            rs = st.executeQuery(sql);
+            rs.next();
+           
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Error ModelAgenda 001: " + err.getMessage());
+>>>>>>> 99522d00be31e4b89a59980649de2d7e3153c02d
         }
-        return con;
     }
 
+<<<<<<< HEAD
+=======
+   
+   
+>>>>>>> 99522d00be31e4b89a59980649de2d7e3153c02d
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 package models;
 
@@ -31,4 +32,29 @@ public class Conexion {
         return con;
     }
     
+=======
+package models;
+import java.sql.*;
+/**
+ *
+ * @author ManuelAlonsoMH
+ */
+public class Conexion {
+    
+    public Conexion(){
+    
+    }
+    
+    public Connection getConexion(){
+        Connection con = null;
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_Ferreteria","root","");
+        } catch (Exception e) {
+        }
+        
+        return con;
+    }
+>>>>>>> 99522d00be31e4b89a59980649de2d7e3153c02d
 }

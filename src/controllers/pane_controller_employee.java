@@ -9,7 +9,7 @@ import views.pane_view_employee;
  * @author Sebastián
  */
     public class pane_controller_employee {
-    public pane_controller_employee c_employee;
+   
     public pane_model_employee m_employee;
     public pane_view_employee v_employee;
     public modelMain modelmain;
@@ -47,6 +47,8 @@ import views.pane_view_employee;
         v_employee.jtf_nombre.setText(m_employee.getNombre());
         v_employee.jtf_ap_paterno.setText(m_employee.getAp_paterno());
         v_employee.jtf_ap_materno.setText(m_employee.getAp_materno());
+        
+        v_employee.jtf_no_seguro.setText(m_employee.getNo_seguro());
         v_employee.jtf_calle.setText(m_employee.getCalle());
         v_employee.jtf_ciudad.setText(m_employee.getCiudad());
         v_employee.jtf_edo.setText(m_employee.getEdo());
