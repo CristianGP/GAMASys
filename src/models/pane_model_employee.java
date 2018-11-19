@@ -1,5 +1,6 @@
 package models;
 
+import bd.BD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -341,6 +342,73 @@ public class pane_model_employee extends Conexion {
         }
     }
 
+        private void searchByName() {
+        try{
+            String search_by_name = ("SELECT * FROM empleados WHERE nombre_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(search_by_name);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
     
+    private void searchByStreet() {
+        try{
+            String search_by_street = ("SELECT * FROM empleados WHERE calle_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(search_by_street);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    private void searchByColony() {
+        try{
+            String search_by_colony = ("SELECT * FROM empleados WHERE colonia_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(search_by_colony);      
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    private void searchByPhone() {
+        try{
+            String search_by_phone = ("SELECT * FROM empleados WHERE telefono_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(search_by_phone);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
     
+    private void searchByState() {
+        try{
+            String search_by_state = ("SELECT * FROM empleados WHERE estado_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(search_by_state);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
+    
+    private void searchByCity() {
+        try{
+            String search_by_city = ("SELECT * FROM empleados WHERE ciudad_emp LIKE %?%");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            ps= (PreparedStatement) con.prepareStatement(search_by_city);
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+        }
+    }
 }
