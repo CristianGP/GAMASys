@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.modelMain;
 
-public class pane_model_supplier {
+public class pane_model_supplier extends Conexion {
     
     private Statement st;
     private PreparedStatement pst;
@@ -90,8 +90,9 @@ public class pane_model_supplier {
     }
     
     public void registerSupplier(){
+        Connection con =  getConexion();
         try {
-            modelmain.conectarDB();
+           
             pst.executeQuery("INSERT INTO proveedores(nombre, calle, cp, telefono, ciudad, estado) VALUES (?,?,?,?,?,?))");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error registrar" + ex.getMessage());
@@ -99,8 +100,9 @@ public class pane_model_supplier {
     }
     
     public void modifySupplier(){
+        Connection con =  getConexion();
         try{
-            modelmain.conectarDB();
+           
             pst.executeQuery("UPDATE proveedores SET nombre=? , calle =?, cp =?, telefono=?, ciudad=?, estado=?");
         } catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "Error modificar" + ex.getMessage());
@@ -108,8 +110,9 @@ public class pane_model_supplier {
     }
     
     public void deleteSupplier(){
+        Connection con =  getConexion();
         try{
-            modelmain.conectarDB();
+            
             pst.executeQuery("DELETE * FROM proveedores WHERE id_prov=?");
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "Error borrar" + ex.getMessage());

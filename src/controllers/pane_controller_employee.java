@@ -1,6 +1,7 @@
 package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import models.pane_model_employee;
 import models.modelMain;
 import views.pane_view_employee;
@@ -43,7 +44,7 @@ import views.pane_view_employee;
     }   
 
     private void initDB() {
-        modelmain.conectarDB();
+        
         v_employee.jtf_nombre.setText(m_employee.getNombre());
         v_employee.jtf_ap_paterno.setText(m_employee.getAp_paterno());
         v_employee.jtf_ap_materno.setText(m_employee.getAp_materno());
@@ -91,6 +92,12 @@ import views.pane_view_employee;
     }
     private void setValues() {
         
+    }
+    
+        public void initComponents() {
+        v_employee.setLocation(null);
+        v_employee.setVisible(true);
+        v_employee.jtf_nombre.setVisible(false);
     }
      
 }

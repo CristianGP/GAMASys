@@ -12,7 +12,7 @@ import models.modelMain;
  *
  * @author Sebastián
  */
-public class pane_model_employee {
+public class pane_model_employee extends Conexion {
   
     private Statement st;
     private ResultSet rs;
@@ -276,27 +276,37 @@ public class pane_model_employee {
     }
     
     public void newRegister(){
+         Connection con =  getConexion();
         try{
+            
+          
+           
             ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado) "
                     + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
-            modelmain.conectarDB();
+            
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
     }
     
     public void insertRegister(){
+          Connection con= getConexion();
              try{
+                 
+          
             ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado)"
                     + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
-            modelmain.conectarDB();
+            
         } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
     }
     
     public void editRegister(){
+        Connection con =  getConexion();
             try{
+            
+            
             String actualName= this.getNombre();
             String actualFirstName=this.getAp_paterno();
             String actualLastName=this.getAp_materno();
@@ -315,16 +325,17 @@ public class pane_model_employee {
             
             ps.executeQuery("UPDATE empleados SET nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?,"
                     + "WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
-            modelmain.conectarDB();
-        } catch(SQLException ex){
+            
+            } catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
         }
     }
     
     public void deleteRegister(){
+        Connection con =  getConexion();
            try{
             ps.executeUpdate("DELETE FROM empleados WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
-            modelmain.conectarDB();
+            
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error model:"+ex.getMessage());
         }
