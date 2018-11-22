@@ -5,20 +5,20 @@
  */
 package main;
 
-import controllers.pane_controller_products;
-import models.pane_model_products;
-import views.pane_view_products;
+import models.*;
+import views.*;
+import controllers.*;
 
 /**
  *
- * @author VICTOR MANUEL ARANDA
+ * @author Isaías
  */
+
+
 public class mainMain {
     public static void main(String[] args) {
-    pane_model_products mod = new pane_model_products();
-    pane_view_products pro = new pane_view_products();
-    
-    pane_controller_products ctrl = new pane_controller_products(mod, pro);
-    ctrl.initComponents();
+        pane_model_supplier model_supplier = new pane_model_supplier();
+        pane_view_supplier view_supplier = new pane_view_supplier();
+        pane_controller_supplier controller_supplier = new pane_controller_supplier(view_supplier, model_supplier);
     }
 }

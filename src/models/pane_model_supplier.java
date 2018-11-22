@@ -73,23 +73,14 @@ public class pane_model_supplier extends Conexion {
         this.estado = estado;
     }
     
-    private void setValues(){
-        try {
-            nombre = rs.getString("nombre");
-            calle = rs.getString("calle");
-            cp = rs.getString("cp");
-            telefono = rs.getString("telefono");
-            ciudad = rs.getString("ciudad");
-            estado = rs.getString("estado");
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error model supp");
-        }
-        
-    }
-    
+    /*
+    Método agregar un proveedor, donde se hace la sentencia de sql para insertar registros
+    dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
+    muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
+    Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
+    */
     public void registerSupplier(){
-        String insert = ("INSERT INTO proveedores (nombre_prov, telefono_prov, calle_prov, colonia_prov, ciudad_prov, estado_prov) VALUES (?,?,?,?,?,?) WHERE id_prov =?");
+        String insert = ("INSERT INTO proveedores (nombre_prov, telefono_prov, calle_prov, colonia_prov, ciudad_prov, estado_prov) VALUES (?,?,?,?,?,?);");
         BD DataBase = new BD();
         Connection con = DataBase.getConnection();
         
@@ -98,9 +89,10 @@ public class pane_model_supplier extends Conexion {
             pst.setString(1, view_supplier.jtf_name.getText());
             pst.setString(2, view_supplier.jtf_phone.getText());
             pst.setString(3, view_supplier.jtf_street.getText());
-            pst.setString(3, view_supplier.jtf_colony.getText());
-            pst.setString(3, view_supplier.jtf_city.getText());
-            pst.setString(3, view_supplier.jtf_state.getText());
+            pst.setString(4, view_supplier.jtf_colony.getText());
+            pst.setString(5, view_supplier.jtf_city.getText());
+            pst.setString(6, view_supplier.jtf_state.getText());
+            pst.setString(7, rs.getString("id_prov"));
             if (view_supplier.jtf_name.getText().isEmpty() || 
                     view_supplier.jtf_phone.getText().isEmpty() || 
                     view_supplier.jtf_street.getText().isEmpty() || 

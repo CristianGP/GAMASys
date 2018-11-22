@@ -5,6 +5,10 @@
  */
 package bd;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import models.Conexion;
 /**
  *
  * @author Isaías
@@ -12,7 +16,7 @@ import java.sql.*;
 public class BD {
 
     private String db = "ferreteria";
-    private String url = "pi1509.ddns.net:3306" + db;
+    private String url = "jdbc:mysql://pi1509.ddns.net:3306/" + db;
     private String user = "Gamasys";
     private String pass = "gamasys";
     Connection con = null;
@@ -25,8 +29,21 @@ public class BD {
         }
     }
     public Connection getConnection(){
-        return con;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                con =  (com.mysql.jdbc.Connection) DriverManager.getConnection(url, user, pass);
+                JOptionPane.showMessageDialog(null, "CONEXION ESTABLECIDA A LA BASE DE DATOS");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR A LA BASE DE DATOS" +ex);
+            }
+        
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }return con;
+        
     }
+    
     public void desconectar(){
         con = null;
     }

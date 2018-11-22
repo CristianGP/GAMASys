@@ -46,6 +46,7 @@ public class pane_controller_supplier implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view_supplier.jb_add){
             model_supplier.registerSupplier();
+            cargar();
         }
         else if (e.getSource() == view_supplier.jb_delete){
             deleteSupplier();
@@ -107,16 +108,7 @@ public class pane_controller_supplier implements ActionListener{
         view_supplier.setLocationRelativeTo(null);
         view_supplier.setVisible(true);
     }
-    
-    /*
-    Método agregar un proveedor, donde se hace la sentencia de sql para insertar registros
-    dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
-    muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
-    Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
-    */
-    private void addSupplier() {
-        
-    }
+   
     /*
         Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros
         dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
