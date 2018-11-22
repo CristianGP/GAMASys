@@ -22,11 +22,12 @@ import views.pane_view_supplier;
 import models.pane_model_supplier;
 import bd.BD;
 import java.sql.PreparedStatement;
+import models.*;
 
 public class pane_controller_supplier implements ActionListener{
 
-    private final pane_view_supplier view_supplier;
-    private final pane_model_supplier model_supplier;
+    pane_view_supplier view_supplier = new pane_view_supplier();
+    pane_model_supplier model_supplier = new pane_model_supplier();
 
     public pane_controller_supplier(pane_view_supplier view_supplier, pane_model_supplier model_supplier) {
         this.view_supplier = view_supplier;
@@ -44,7 +45,7 @@ public class pane_controller_supplier implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view_supplier.jb_add){
-            addSupplier();
+            model_supplier.registerSupplier();
         }
         else if (e.getSource() == view_supplier.jb_delete){
             deleteSupplier();
@@ -114,43 +115,7 @@ public class pane_controller_supplier implements ActionListener{
     Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
     */
     private void addSupplier() {
-        String insert = ("INSERT INTO proveedores (nombre_prov, telefono_prov, calle_prov, colonia_prov, ciudad_prov, estado_prov) VALUES (?,?,?,?,?,?) WHERE id_prov =?");
-        BD DataBase = new BD();
-        Connection con = DataBase.getConnection();
         
-        try {
-            pst = (PreparedStatement) con.prepareStatement(insert); 
-            pst.setString(1, view_supplier.jtf_name.getText());
-            pst.setString(2, view_supplier.jtf_phone.getText());
-            pst.setString(3, view_supplier.jtf_street.getText());
-            pst.setString(3, view_supplier.jtf_colony.getText());
-            pst.setString(3, view_supplier.jtf_city.getText());
-            pst.setString(3, view_supplier.jtf_state.getText());
-            if (view_supplier.jtf_name.getText().isEmpty() || 
-                    view_supplier.jtf_phone.getText().isEmpty() || 
-                    view_supplier.jtf_street.getText().isEmpty() || 
-                    view_supplier.jtf_colony.getText().isEmpty() || 
-                    view_supplier.jtf_city.getText().isEmpty() || 
-                    view_supplier.jtf_state.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
-            }else {
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se insertó el registro");
-                view_supplier.jtf_name.setText("");
-                view_supplier.jtf_phone.setText("");
-                view_supplier.jtf_street.setText("");
-                view_supplier.jtf_colony.setText("");
-                view_supplier.jtf_city.setText("");
-                view_supplier.jtf_state.setText("");
-                view_supplier.jtf_search.setText("");
-                view_supplier.jb_delete.setEnabled(true);
-                view_supplier.jb_modify.setEnabled(true);
-                view_supplier.jb_new.setEnabled(true);
-                view_supplier.jb_search.setEnabled(true);
-            }
-        }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro");
-        }
     }
     /*
         Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros

@@ -29,7 +29,7 @@ telefono int(15) not null,
 email varchar(50)not null);
 
 create table empleados(
-id_emp int(10) auto_increment primary key,
+id_empleado int(10) auto_increment primary key,
 nombre_emp char(15) not null,
 ap_paterno_emp char (15)not null,
 ap_materno_emp char (15)not null,

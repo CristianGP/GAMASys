@@ -9,22 +9,21 @@ package models;
  *
  * @author VICTOR MANUEL ARANDA
  */
+import bd.BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import models.modelMain;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import models.modelMain;
+import views.pane_view_supplier;
 
 public class pane_model_supplier extends Conexion {
     
     private Statement st;
     private PreparedStatement pst;
     private ResultSet rs;
+    pane_view_supplier view_supplier = new pane_view_supplier();
     
     private String nombre;
     private String calle;
@@ -90,12 +89,42 @@ public class pane_model_supplier extends Conexion {
     }
     
     public void registerSupplier(){
-        Connection con =  getConexion();
+        String insert = ("INSERT INTO proveedores (nombre_prov, telefono_prov, calle_prov, colonia_prov, ciudad_prov, estado_prov) VALUES (?,?,?,?,?,?) WHERE id_prov =?");
+        BD DataBase = new BD();
+        Connection con = DataBase.getConnection();
+        
         try {
-           
-            pst.executeQuery("INSERT INTO proveedores(nombre, calle, cp, telefono, ciudad, estado) VALUES (?,?,?,?,?,?))");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error registrar" + ex.getMessage());
+            pst = (PreparedStatement) con.prepareStatement(insert); 
+            pst.setString(1, view_supplier.jtf_name.getText());
+            pst.setString(2, view_supplier.jtf_phone.getText());
+            pst.setString(3, view_supplier.jtf_street.getText());
+            pst.setString(3, view_supplier.jtf_colony.getText());
+            pst.setString(3, view_supplier.jtf_city.getText());
+            pst.setString(3, view_supplier.jtf_state.getText());
+            if (view_supplier.jtf_name.getText().isEmpty() || 
+                    view_supplier.jtf_phone.getText().isEmpty() || 
+                    view_supplier.jtf_street.getText().isEmpty() || 
+                    view_supplier.jtf_colony.getText().isEmpty() || 
+                    view_supplier.jtf_city.getText().isEmpty() || 
+                    view_supplier.jtf_state.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
+            }else {
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se insertó el registro");
+                view_supplier.jtf_name.setText("");
+                view_supplier.jtf_phone.setText("");
+                view_supplier.jtf_street.setText("");
+                view_supplier.jtf_colony.setText("");
+                view_supplier.jtf_city.setText("");
+                view_supplier.jtf_state.setText("");
+                view_supplier.jtf_search.setText("");
+                view_supplier.jb_delete.setEnabled(true);
+                view_supplier.jb_modify.setEnabled(true);
+                view_supplier.jb_new.setEnabled(true);
+                view_supplier.jb_search.setEnabled(true);
+            }
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro");
         }
     }
     
