@@ -12,9 +12,9 @@ import java.sql.*;
 public class BD {
 
     private String db = "ferreteria";
-    private String url = "130.100.24.160" + db;
-    private String user = "root";
-    private String pass = "";
+    private String url = "pi1509.ddns.net:3306" + db;
+    private String user = "Gamasys";
+    private String pass = "gamasys";
     Connection con = null;
     
     public BD(){
