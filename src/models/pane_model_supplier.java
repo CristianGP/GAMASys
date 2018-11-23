@@ -92,7 +92,6 @@ public class pane_model_supplier extends Conexion {
             pst.setString(4, view_supplier.jtf_colony.getText());
             pst.setString(5, view_supplier.jtf_city.getText());
             pst.setString(6, view_supplier.jtf_state.getText());
-            pst.setString(7, rs.getString("id_prov"));
             if (view_supplier.jtf_name.getText().isEmpty() || 
                     view_supplier.jtf_phone.getText().isEmpty() || 
                     view_supplier.jtf_street.getText().isEmpty() || 
@@ -120,23 +119,88 @@ public class pane_model_supplier extends Conexion {
         }
     }
     
+    /*
+        Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros
+        dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
+        muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
+        Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
+    */
     public void modifySupplier(){
-        Connection con =  getConexion();
-        try{
-           
-            pst.executeQuery("UPDATE proveedores SET nombre=? , calle =?, cp =?, telefono=?, ciudad=?, estado=?");
-        } catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error modificar" + ex.getMessage());
+        String update = ("UPDATE proveedores SET nombre_prov=?, telefono=?, calle=?, colonia=?, ciudad=?, estado=? WHERE id_prov=?");
+        BD DataBase = new BD();
+        Connection con = DataBase.getConnection();
+        try {
+            pst = (PreparedStatement) con.prepareStatement(update); 
+            pst.setString(1, view_supplier.jtf_name.getText());
+            pst.setString(2, view_supplier.jtf_phone.getText());
+            pst.setString(3, view_supplier.jtf_street.getText());
+            pst.setString(4, view_supplier.jtf_colony.getText());
+            pst.setString(5, view_supplier.jtf_city.getText());
+            pst.setString(6, view_supplier.jtf_state.getText());
+            pst.setString(6, rs.getString("id_prov"));
+            if (view_supplier.jtf_name.getText().isEmpty() || 
+                view_supplier.jtf_phone.getText().isEmpty() || 
+                view_supplier.jtf_street.getText().isEmpty() || 
+                view_supplier.jtf_colony.getText().isEmpty() || 
+                view_supplier.jtf_city.getText().isEmpty() || 
+                view_supplier.jtf_state.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");    
+            }else{
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se actualizó el registro");
+                view_supplier.jtf_name.setText("");
+                view_supplier.jtf_phone.setText("");
+                view_supplier.jtf_street.setText("");
+                view_supplier.jtf_colony.setText("");
+                view_supplier.jtf_city.setText("");
+                view_supplier.jtf_state.setText("");
+                view_supplier.jtf_search.setText("");
+                view_supplier.jb_delete.setEnabled(true);
+                view_supplier.jb_modify.setEnabled(true);
+                view_supplier.jb_new.setEnabled(true);
+                view_supplier.jb_search.setEnabled(true);
+            }
+        }catch(SQLException ex){ 
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar");
         }
     }
     
+    /*
+        Método para eliminar al proveedor selccionado en la tabla.
+    */
     public void deleteSupplier(){
-        Connection con =  getConexion();
-        try{
-            
-            pst.executeQuery("DELETE * FROM proveedores WHERE id_prov=?");
-        }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error borrar" + ex.getMessage());
+        try {            
+            int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
+            if(eliminar == 0){  
+                String delete = ("DELETE FROM proveedores WHERE id_prov=?");
+                BD DataBase = new BD();
+                Connection con = DataBase.getConnection();
+                pst = (PreparedStatement) con.prepareStatement(delete);
+                pst.setString(1, rs.getString("id_prov"));
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se eliminó el registro");
+            } else {
+                
+            }           
+        } catch(SQLException ex){ 
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro");
         }
+    }
+    
+    /*
+        Método para limpiar las cajas de texto, así como deshabilitar los botones innecesarios para la acción.
+    */
+    public void newSupplier() {
+        view_supplier.jb_delete.setEnabled(false);
+        view_supplier.jb_modify.setEnabled(false);
+        view_supplier.jb_search.setEnabled(false);
+        view_supplier.jb_new.setEnabled(false);
+        view_supplier.jtf_name.setText("");
+        view_supplier.jtf_city.setText("");
+        view_supplier.jtf_colony.setText("");
+        view_supplier.jtf_phone.setText("");
+        view_supplier.jtf_state.setText("");
+        view_supplier.jtf_street.setText("");
+        view_supplier.jtf_search.setText("");
     }
 }
