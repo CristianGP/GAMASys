@@ -131,38 +131,28 @@ public class pane_model_supplier {
         BD DataBase = new BD();
         Connection con = DataBase.getConnection();
         try {
-            pst = (PreparedStatement) con.prepareStatement(update); 
-            pst.setString(1, view_supplier.jtf_name.getText());
-            pst.setString(2, view_supplier.jtf_phone.getText());
-            pst.setString(3, view_supplier.jtf_street.getText());
-            pst.setString(4, view_supplier.jtf_colony.getText());
-            pst.setString(5, view_supplier.jtf_city.getText());
-            pst.setString(6, view_supplier.jtf_state.getText());
-            pst.setString(6, rs.getString("id_prov"));
-            if (view_supplier.jtf_name.getText().isEmpty() || 
-                view_supplier.jtf_phone.getText().isEmpty() || 
-                view_supplier.jtf_street.getText().isEmpty() || 
-                view_supplier.jtf_colony.getText().isEmpty() || 
-                view_supplier.jtf_city.getText().isEmpty() || 
-                view_supplier.jtf_state.getText().isEmpty()){
+            pst.setString(1, this.getNombre());
+            pst.setString(2, this.getTelefono());
+            pst.setString(3, this.getCalle());
+            pst.setString(4, this.getColonia());
+            pst.setString(5, this.getCiudad());
+            pst.setString(6, this.getEstado());
+            pst.setString(7, rs.getString("id_prov"));
+            if (this.getNombre().isEmpty() || 
+                this.getTelefono().isEmpty() || 
+                this.getCalle().isEmpty() || 
+                this.getColonia().isEmpty() || 
+                this.getCiudad().isEmpty() || 
+                this.getEstado().isEmpty()){
             JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");    
             }else{
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se actualizó el registro");
-                view_supplier.jtf_name.setText("");
-                view_supplier.jtf_phone.setText("");
-                view_supplier.jtf_street.setText("");
-                view_supplier.jtf_colony.setText("");
-                view_supplier.jtf_city.setText("");
-                view_supplier.jtf_state.setText("");
-                view_supplier.jtf_search.setText("");
-                view_supplier.jb_delete.setEnabled(true);
-                view_supplier.jb_modify.setEnabled(true);
-                view_supplier.jb_new.setEnabled(true);
-                view_supplier.jb_search.setEnabled(true);
             }
         }catch(SQLException ex){ 
             JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+        }catch (NullPointerException err) {
+            System.err.println("NullPointer:  " + err.getMessage());
         }
     }
     

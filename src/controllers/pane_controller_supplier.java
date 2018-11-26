@@ -80,8 +80,34 @@ public class pane_controller_supplier implements ActionListener{
             cargar();
         }
         else if (e.getSource() == view_supplier.jb_modify){
-            model_supplier.modifySupplier();
             cargar();
+            /*
+                Editando las variabes de getter y setter para el modelo y su método 
+                para modificar al proveedor
+            */
+            model_supplier.setNombre(view_supplier.jtf_name.getText());
+            model_supplier.setTelefono(view_supplier.jtf_phone.getText());
+            model_supplier.setCalle(view_supplier.jtf_street.getText());
+            model_supplier.setColonia(view_supplier.jtf_colony.getText());
+            model_supplier.setCiudad(view_supplier.jtf_city.getText());
+            model_supplier.setEstado(view_supplier.jtf_state.getText());
+            model_supplier.modifySupplier();
+            
+            /*
+                Modificando los elementos del view para habilitar los botones por si están deshabilitados
+                y las cajas de texto por si se requiere ocuparlas.
+            */
+            view_supplier.jtf_name.setText("");
+            view_supplier.jtf_phone.setText("");
+            view_supplier.jtf_street.setText("");
+            view_supplier.jtf_colony.setText("");
+            view_supplier.jtf_city.setText("");
+            view_supplier.jtf_state.setText("");
+            view_supplier.jtf_search.setText("");
+            view_supplier.jb_delete.setEnabled(true);
+            view_supplier.jb_modify.setEnabled(true);
+            view_supplier.jb_new.setEnabled(true);
+            view_supplier.jb_search.setEnabled(true);
         }
         else if (e.getSource() == view_supplier.jb_new){
             view_supplier.jb_delete.setEnabled(false);
@@ -132,6 +158,7 @@ public class pane_controller_supplier implements ActionListener{
         view_supplier.setTitle("Proveedores");
         view_supplier.setLocationRelativeTo(null);
         view_supplier.setVisible(true);
+        cargar();
     }
    
     public void cargar(){
