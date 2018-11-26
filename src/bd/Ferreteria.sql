@@ -51,8 +51,8 @@ foreign key (id_sucursal) references sucursales(id_sucursal));
 
 create table proveedores(
 id_prov  int auto_increment primary key,
-nombre_prov char(15) not null,
-telefono_prov int(10) not null,
+nombre_prov varchar(60) not null,
+telefono_prov varchar(10) not null,
 calle_prov char(30) not null,
 colonia_prov char(15) not null,
 ciudad_prov char(15) not null,

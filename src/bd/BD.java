@@ -24,24 +24,13 @@ public class BD {
     public BD(){
         try{
             con = DriverManager.getConnection(url, user, pass);
+            
         }catch(SQLException e){
-            System.out.println(e);         
+            JOptionPane.showMessageDialog(null, "Mensaje 001 " +e);         
         }
     }
     public Connection getConnection(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            try {
-                con =  (com.mysql.jdbc.Connection) DriverManager.getConnection(url, user, pass);
-                JOptionPane.showMessageDialog(null, "CONEXION ESTABLECIDA A LA BASE DE DATOS");
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR A LA BASE DE DATOS" +ex);
-            }
-        
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }return con;
-        
+        return con;
     }
     
     public void desconectar(){

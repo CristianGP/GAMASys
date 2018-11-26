@@ -28,6 +28,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jtf_name = new javax.swing.JTextField();
         jtf_phone = new javax.swing.JTextField();
         jtf_street = new javax.swing.JTextField();
         jtf_colony = new javax.swing.JTextField();
@@ -44,7 +45,6 @@ public class pane_view_supplier extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jtf_name = new javax.swing.JTextField();
         jb_search = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_supplier = new javax.swing.JTable();
@@ -54,6 +54,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jtf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 122, -1));
         jPanel2.add(jtf_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 122, -1));
         jPanel2.add(jtf_street, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 122, -1));
         jPanel2.add(jtf_colony, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 122, -1));
@@ -117,7 +118,6 @@ public class pane_view_supplier extends javax.swing.JFrame {
 
         jLabel6.setText("Estado");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
-        jPanel2.add(jtf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 122, -1));
 
         jb_search.setText("Buscar");
         jPanel2.add(jb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
@@ -135,7 +135,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jt_supplier);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 511, 91));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 511, 90));
 
         jcb_search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Teléfono", "Calle", "Ciudad", "Estado" }));
         jPanel2.add(jcb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 211, -1));
@@ -159,7 +159,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     /**
      * @param args the command line arguments
      */

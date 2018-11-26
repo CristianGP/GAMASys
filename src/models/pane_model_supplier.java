@@ -18,7 +18,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import views.pane_view_supplier;
 
-public class pane_model_supplier extends Conexion {
+public class pane_model_supplier {
     
     private Statement st;
     private PreparedStatement pst;
@@ -28,11 +28,19 @@ public class pane_model_supplier extends Conexion {
     private String nombre;
     private String calle;
     private String telefono;
-    private String cp;
+    private String colonia;
     private String ciudad;
     private String estado;
     modelMain modelmain;
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getCalle() {
         return calle;
     }
@@ -49,12 +57,12 @@ public class pane_model_supplier extends Conexion {
         this.telefono = telefono;
     }
 
-    public String getCp() {
-        return cp;
+    public String getColonia() {
+        return colonia;
     }
 
-    public void setCp(String cp) {
-        this.cp = cp;
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
     }
 
     public String getCiudad() {
@@ -73,6 +81,8 @@ public class pane_model_supplier extends Conexion {
         this.estado = estado;
     }
     
+    
+    
     /*
     Método agregar un proveedor, donde se hace la sentencia de sql para insertar registros
     dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
@@ -86,36 +96,27 @@ public class pane_model_supplier extends Conexion {
         
         try {
             pst = (PreparedStatement) con.prepareStatement(insert); 
-            pst.setString(1, view_supplier.jtf_name.getText());
-            pst.setString(2, view_supplier.jtf_phone.getText());
-            pst.setString(3, view_supplier.jtf_street.getText());
-            pst.setString(4, view_supplier.jtf_colony.getText());
-            pst.setString(5, view_supplier.jtf_city.getText());
-            pst.setString(6, view_supplier.jtf_state.getText());
-            if (view_supplier.jtf_name.getText().isEmpty() || 
-                    view_supplier.jtf_phone.getText().isEmpty() || 
-                    view_supplier.jtf_street.getText().isEmpty() || 
-                    view_supplier.jtf_colony.getText().isEmpty() || 
-                    view_supplier.jtf_city.getText().isEmpty() || 
-                    view_supplier.jtf_state.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
-            }else {
+            pst.setString(1, this.getNombre());
+            pst.setString(2, this.getTelefono());
+            pst.setString(3, this.getCalle());
+            pst.setString(4, this.getColonia());
+            pst.setString(5, this.getCiudad());
+            pst.setString(6, this.getEstado());
+            if (this.getNombre().isEmpty() || 
+                this.getTelefono().isEmpty() || 
+                this.getCalle().isEmpty() || 
+                this.getColonia().isEmpty() || 
+                this.getCiudad().isEmpty() || 
+                this.getEstado().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
+            }else{
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se insertó el registro");
-                view_supplier.jtf_name.setText("");
-                view_supplier.jtf_phone.setText("");
-                view_supplier.jtf_street.setText("");
-                view_supplier.jtf_colony.setText("");
-                view_supplier.jtf_city.setText("");
-                view_supplier.jtf_state.setText("");
-                view_supplier.jtf_search.setText("");
-                view_supplier.jb_delete.setEnabled(true);
-                view_supplier.jb_modify.setEnabled(true);
-                view_supplier.jb_new.setEnabled(true);
-                view_supplier.jb_search.setEnabled(true);
             }
         }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro");
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
+        }catch (NullPointerException err) {
+            System.err.println("NullPointer:  " + err.getMessage());
         }
     }
     
@@ -179,28 +180,9 @@ public class pane_model_supplier extends Conexion {
                 pst.setString(1, rs.getString("id_prov"));
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se eliminó el registro");
-            } else {
-                
-            }           
+            }                         
         } catch(SQLException ex){ 
             JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro");
         }
-    }
-    
-    /*
-        Método para limpiar las cajas de texto, así como deshabilitar los botones innecesarios para la acción.
-    */
-    public void newSupplier() {
-        view_supplier.jb_delete.setEnabled(false);
-        view_supplier.jb_modify.setEnabled(false);
-        view_supplier.jb_search.setEnabled(false);
-        view_supplier.jb_new.setEnabled(false);
-        view_supplier.jtf_name.setText("");
-        view_supplier.jtf_city.setText("");
-        view_supplier.jtf_colony.setText("");
-        view_supplier.jtf_phone.setText("");
-        view_supplier.jtf_state.setText("");
-        view_supplier.jtf_street.setText("");
-        view_supplier.jtf_search.setText("");
     }
 }
