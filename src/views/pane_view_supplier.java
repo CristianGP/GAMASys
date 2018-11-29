@@ -50,7 +50,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
         jt_supplier = new javax.swing.JTable();
         jcb_search = new javax.swing.JComboBox<>();
         jtf_search = new javax.swing.JTextField();
-        jl_id_supplier = new javax.swing.JLabel();
+        jtf_id_supplier = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,9 +141,7 @@ public class pane_view_supplier extends javax.swing.JFrame {
         jcb_search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Teléfono", "Calle", "Ciudad", "Estado" }));
         jPanel2.add(jcb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 211, -1));
         jPanel2.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 170, -1));
-
-        jl_id_supplier.setText("0");
-        jPanel2.add(jl_id_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
+        jPanel2.add(jtf_id_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,10 +214,10 @@ public class pane_view_supplier extends javax.swing.JFrame {
     public javax.swing.JButton jb_new;
     public javax.swing.JButton jb_search;
     public javax.swing.JComboBox<String> jcb_search;
-    public javax.swing.JLabel jl_id_supplier;
     public javax.swing.JTable jt_supplier;
     public javax.swing.JTextField jtf_city;
     public javax.swing.JTextField jtf_colony;
+    public javax.swing.JTextField jtf_id_supplier;
     public javax.swing.JTextField jtf_name;
     public javax.swing.JTextField jtf_phone;
     public javax.swing.JTextField jtf_search;

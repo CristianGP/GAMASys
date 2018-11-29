@@ -69,7 +69,7 @@ public class pane_controller_supplier implements ActionListener {
             view_supplier.jtf_city.setText("");
             view_supplier.jtf_state.setText("");
             view_supplier.jtf_search.setText("");
-            view_supplier.jl_id_supplier.setText("0");
+            view_supplier.jtf_id_supplier.setText("0");
             view_supplier.jb_delete.setEnabled(true);
             view_supplier.jb_modify.setEnabled(true);
             view_supplier.jb_new.setEnabled(true);
@@ -81,9 +81,8 @@ public class pane_controller_supplier implements ActionListener {
                 Editando las variabes de getter y setter para el modelo y su método 
                 para registrar al proveedor
              */
+            model_supplier.setID(view_supplier.jtf_id_supplier.getText());
             model_supplier.deleteSupplier();
-            model_supplier.setID(view_supplier.jl_id_supplier.getText());
-            System.out.println("Eliminando a: " + view_supplier.jl_id_supplier.getText());
             /*
                 Modificando los elementos del view para habilitar los botones por si están deshabilitados
                 y las cajas de texto por si se requiere agregar otro.
@@ -95,7 +94,7 @@ public class pane_controller_supplier implements ActionListener {
             view_supplier.jtf_city.setText("");
             view_supplier.jtf_state.setText("");
             view_supplier.jtf_search.setText("");
-            view_supplier.jl_id_supplier.setText("0");
+            view_supplier.jtf_id_supplier.setText("0");
             view_supplier.jb_delete.setEnabled(true);
             view_supplier.jb_modify.setEnabled(true);
             view_supplier.jb_new.setEnabled(true);
@@ -112,7 +111,7 @@ public class pane_controller_supplier implements ActionListener {
             model_supplier.setColonia(view_supplier.jtf_colony.getText());
             model_supplier.setCiudad(view_supplier.jtf_city.getText());
             model_supplier.setEstado(view_supplier.jtf_state.getText());
-            model_supplier.setID(view_supplier.jl_id_supplier.getText());
+            model_supplier.setID(view_supplier.jtf_id_supplier.getText());
             model_supplier.modifySupplier();
 
             /*
@@ -205,7 +204,7 @@ public class pane_controller_supplier implements ActionListener {
         try {
             if (view_supplier.jt_supplier.getSelectedRow() != -1) {
                 int i = view_supplier.jt_supplier.getSelectedRow();
-                view_supplier.jl_id_supplier.setText(view_supplier.jt_supplier.getValueAt(i, 0).toString());
+                view_supplier.jtf_id_supplier.setText(view_supplier.jt_supplier.getValueAt(i, 0).toString());
                 view_supplier.jtf_name.setText(view_supplier.jt_supplier.getValueAt(i, 1).toString());
                 view_supplier.jtf_phone.setText(view_supplier.jt_supplier.getValueAt(i, 2).toString());
                 view_supplier.jtf_street.setText(view_supplier.jt_supplier.getValueAt(i, 3).toString());
