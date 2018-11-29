@@ -14,7 +14,7 @@ import models.Conexion;
  * @author Isaías
  */
 public class BD {
-
+    
     private String db = "ferreteria";
     private String url = "jdbc:mysql://pi1509.ddns.net:3306/" + db;
     private String user = "Gamasys";
@@ -24,7 +24,6 @@ public class BD {
     public BD(){
         try{
             con = DriverManager.getConnection(url, user, pass);
-            
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Mensaje 001 " +e);         
         }

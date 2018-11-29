@@ -25,6 +25,9 @@ public class pane_model_supplier {
     private ResultSet rs;
     pane_view_supplier view_supplier = new pane_view_supplier();
     
+    
+    private String ID;
+
     private String nombre;
     private String calle;
     private String telefono;
@@ -32,7 +35,16 @@ public class pane_model_supplier {
     private String ciudad;
     private String estado;
     modelMain modelmain;
+    /*
+        Getter y Setter de cada variable
+    */
+    public String getID() {
+        return ID;
+    }
 
+    public void setID(String ID) {
+        this.ID = ID;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -127,17 +139,18 @@ public class pane_model_supplier {
         Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
     */
     public void modifySupplier(){
-        String update = ("UPDATE proveedores SET nombre_prov=?, telefono=?, calle=?, colonia=?, ciudad=?, estado=? WHERE id_prov=?");
+        String update = ("UPDATE proveedores SET nombre_prov = ?, telefono_prov = ?, calle_prov = ?, colonia_prov = ?, ciudad_prov = ?, estado_prov = ? WHERE id_prov = ? ;");
         BD DataBase = new BD();
         Connection con = DataBase.getConnection();
         try {
+            pst = (PreparedStatement) con.prepareStatement(update);
             pst.setString(1, this.getNombre());
             pst.setString(2, this.getTelefono());
             pst.setString(3, this.getCalle());
             pst.setString(4, this.getColonia());
             pst.setString(5, this.getCiudad());
             pst.setString(6, this.getEstado());
-            pst.setString(7, rs.getString("id_prov"));
+            pst.setString(7, this.getID());
             if (this.getNombre().isEmpty() || 
                 this.getTelefono().isEmpty() || 
                 this.getCalle().isEmpty() || 
@@ -152,27 +165,32 @@ public class pane_model_supplier {
         }catch(SQLException ex){ 
             JOptionPane.showMessageDialog(null, "No se pudo actualizar");
         }catch (NullPointerException err) {
-            System.err.println("NullPointer:  " + err.getMessage());
+            JOptionPane.showMessageDialog(null, "NullPointer:  " + err.getMessage());
         }
     }
     
     /*
         Método para eliminar al proveedor selccionado en la tabla.
     */
-    public void deleteSupplier(){
-        try {            
-            int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
-            if(eliminar == 0){  
-                String delete = ("DELETE FROM proveedores WHERE id_prov=?");
-                BD DataBase = new BD();
-                Connection con = DataBase.getConnection();
+    public void deleteSupplier(){          
+        int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
+        if(eliminar == 0){  
+            String delete = ("DELETE FROM proveedores WHERE id_prov = ? ;");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            try{
                 pst = (PreparedStatement) con.prepareStatement(delete);
-                pst.setString(1, rs.getString("id_prov"));
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se eliminó el registro");
-            }                         
-        } catch(SQLException ex){ 
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro");
-        }
+                pst.setString(1, this.getID());
+                System.out.println("Eliminando a: " + this.getID());
+                if (this.getID() == "0"){
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar este registro");
+                }else{
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se eliminó el registro");
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar" + ex.getMessage());
+            }
+        }                         
     }
 }
