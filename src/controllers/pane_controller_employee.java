@@ -67,7 +67,7 @@ import views.pane_view_employee;
     }
 
     private void jb_add_actionPerformed(){
-        m_employee.newRegister();
+        m_employee.insertRegister();
         setValues();
     }
     

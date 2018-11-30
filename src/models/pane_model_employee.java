@@ -8,16 +8,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import models.modelMain;
+import views.pane_view_employee;
 /**
  *
  * @author Sebastián
  */
-public class pane_model_employee extends Conexion {
+public class pane_model_employee {
   
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
+    pane_view_employee view_employee =  new pane_view_employee();
+    
+    private String ID;
     private String nombre;
     private String ap_paterno;
     private String ap_materno;
@@ -34,9 +37,23 @@ public class pane_model_employee extends Conexion {
     private String tipo_empleado;
     
     modelMain modelmain;
+    
+    /**
+     * @return the ID
+     */
+    public String getID() {
+        return ID;
+    }
+    /**
+     * @param ID the ID to set
+     */
+    public void setID(String ID) {
+        this.ID = ID;
+    }
     /**
      * @return the nombre
      */
+    
     public String getNombre() {
         return nombre;
     }
@@ -275,72 +292,126 @@ public class pane_model_employee extends Conexion {
             JOptionPane.showMessageDialog(null, "Error model:" + ex.getMessage());
         }   
     }
-    
-    public void newRegister(){
-         Connection con =  getConexion();
-        try{
-            
-          
-           
-            ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado) "
-                    + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
-            
-        } catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
-        }
-    }
-    
+       
     public void insertRegister(){
-          Connection con= getConexion();
-             try{
-                 
-          
-            ps.executeQuery("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado)"
+         String insert = ("INSERT INTO empleados(nombre_empleado,ap_paterno,ap_materno,numero_cuenta,numero_seguro,banco,curp,telefono,calle,colonia,estado,ciudad,cp,tipo_empleado)"
                     + "VALUES ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?");
-            
-        } catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
+         BD DataBase = new BD();
+         Connection con = DataBase.getConnection();
+         
+         try{
+                ps = (PreparedStatement) con.prepareStatement(insert);
+                ps.setString(1, this.getNombre());
+                ps.setString(2, this.getAp_paterno());
+                ps.setString(3, this.getAp_materno());
+                ps.setInt(4, this.getNo_cuenta());
+                ps.setString(5, this.getNo_seguro());
+                ps.setString(6, this.getBanco());
+                ps.setString(7, this.getCurp());
+                ps.setInt(8, this.getTelefono());
+                ps.setString(9, this.getCalle());
+                ps.setString(10, this.getColonia());
+                ps.setString(11, this.getEdo());
+                ps.setString(12, this.getCiudad());
+                ps.setString(13, this.getCp());
+                ps.setString(14, this.getTipo_empleado());
+                if(this.getNombre().isEmpty() ||
+                   this.getAp_paterno().isEmpty() ||
+                   this.getAp_materno().isEmpty() ||
+                   this.getNo_seguro().isEmpty() ||
+                   this.getBanco().isEmpty() ||
+                   this.getCurp().isEmpty() ||
+                   this.getCalle().isEmpty() ||
+                   this.getColonia().isEmpty() ||
+                   this.getEdo().isEmpty() ||
+                   this.getCiudad().isEmpty() ||
+                   this.getCp().isEmpty() ||
+                   this.getTipo_empleado().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
+                    
+                }
+                else{
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se inserto el registro");
+                }
+                }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
+        }catch (NullPointerException err) {
+            System.err.println("NullPointer:  " + err.getMessage());
         }
     }
     
     public void editRegister(){
-        Connection con =  getConexion();
-            try{
-            
-            
-            String actualName= this.getNombre();
-            String actualFirstName=this.getAp_paterno();
-            String actualLastName=this.getAp_materno();
-            Integer actualCountNumber=this.getNo_cuenta();
-            String actualSecureNumber=this.getNo_seguro();
-            String actualBank=this.getBanco();
-            String actualCurp=this.getCurp();
-            Integer actualPhone=this.getTelefono();
-            String actualStreet=this.getCalle();
-            String actualColony=this.getColonia();
-            String actualState=this.getEdo();
-            String actualCity=this.getCiudad();           
-            String actualPC=this.getCp();
-            String actualType=this.getTipo_empleado();
-            
-            
-            ps.executeQuery("UPDATE empleados SET nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?,"
+        String update = ("UPDATE empleados SET nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?,"
                     + "WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
-            
-            } catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error model:"+ex.getMessage());
+        BD DataBase = new BD();
+        Connection con = DataBase.getConnection();
+           try{
+                ps = (PreparedStatement) con.prepareStatement(update);
+                ps.setString(1, this.getNombre());
+                ps.setString(2, this.getAp_paterno());
+                ps.setString(3, this.getAp_materno());
+                ps.setInt(4, this.getNo_cuenta());
+                ps.setString(5, this.getNo_seguro());
+                ps.setString(6, this.getBanco());
+                ps.setString(7, this.getCurp());
+                ps.setInt(8, this.getTelefono());
+                ps.setString(9, this.getCalle());
+                ps.setString(10, this.getColonia());
+                ps.setString(11, this.getEdo());
+                ps.setString(12, this.getCiudad());
+                ps.setString(13, this.getCp());
+                ps.setString(14, this.getTipo_empleado());
+                if(this.getNombre().isEmpty() ||
+                   this.getAp_paterno().isEmpty() ||
+                   this.getAp_materno().isEmpty() ||
+                   this.getNo_seguro().isEmpty() ||
+                   this.getBanco().isEmpty() ||
+                   this.getCurp().isEmpty() ||
+                   this.getCalle().isEmpty() ||
+                   this.getColonia().isEmpty() ||
+                   this.getEdo().isEmpty() ||
+                   this.getCiudad().isEmpty() ||
+                   this.getCp().isEmpty() ||
+                   this.getTipo_empleado().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
+                    
+                }
+                else{
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se inserto el registro");
+                }
+                }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
+        }catch (NullPointerException err) {
+            System.err.println("NullPointer:  " + err.getMessage());
         }
     }
+         
     
     public void deleteRegister(){
-        Connection con =  getConexion();
-           try{
-            ps.executeUpdate("DELETE FROM empleados WHERE nombre_empleado=?,ap_paterno=?,ap_materno=?,numero_cuenta=?,numero_seguro=?,banco=?,curp=?,telefono=?,calle=?,colonia=?,estado=?,ciudad=?,cp=?,tipo_empleado=?;");
-            
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error model:"+ex.getMessage());
-        }
+        int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
+        if(eliminar == 0){  
+            String delete = ("DELETE FROM empleados WHERE id_empleado = ? ;");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            try{
+                ps = (PreparedStatement) con.prepareStatement(delete);
+                ps.setString(1, this.getID());
+                System.out.println("Eliminando a: " + this.getID());
+                if (this.getID() == "0"){
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar este registro");
+                }else{
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se eliminó el registro");
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar" + ex.getMessage());
+            }
+        }                         
     }
+
+    
 
         private void searchByName() {
         try{

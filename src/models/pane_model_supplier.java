@@ -125,12 +125,12 @@ public class pane_model_supplier {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se insertó el registro");
             }
-        }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
-        }catch (NullPointerException err) {
-            System.err.println("NullPointer:  " + err.getMessage());
+            }catch (SQLException ex){
+                JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
+            }catch (NullPointerException err) {
+                System.err.println("NullPointer:  " + err.getMessage());
+            }
         }
-    }
     
     /*
         Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros
