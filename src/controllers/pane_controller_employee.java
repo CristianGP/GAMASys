@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import models.pane_model_employee;
-import models.modelMain;
 import views.pane_view_employee;
 /**
  *
@@ -13,12 +12,11 @@ import views.pane_view_employee;
    
     public pane_model_employee m_employee;
     public pane_view_employee v_employee;
-    public modelMain modelmain;
     
     ActionListener actionListener =  new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-        if(e.getSource()== v_employee.jb_añadir){
+        if(e.getSource()== v_employee.jb_anadir){
             jb_add_actionPerformed();
         }
         else if (e.getSource()==v_employee.jb_eliminar){
@@ -37,8 +35,7 @@ import views.pane_view_employee;
     };
     
     public pane_controller_employee(){
-        this.m_employee= m_employee;
-        this.v_employee= v_employee;
+        
         setActionListener();
         initDB();
     }   
@@ -58,7 +55,7 @@ import views.pane_view_employee;
         
     }
     private void setActionListener() {
-        v_employee.jb_añadir.addActionListener(actionListener);
+        v_employee.jb_anadir.addActionListener(actionListener);
         v_employee.jb_buscar.addActionListener(actionListener);
         v_employee.jb_eliminar.addActionListener(actionListener);
         v_employee.jb_modificar.addActionListener(actionListener);

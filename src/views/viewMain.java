@@ -27,21 +27,103 @@ public class viewMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jb_close = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jm_components = new javax.swing.JMenu();
+        jmi_product = new javax.swing.JMenuItem();
+        jmi_employee = new javax.swing.JMenuItem();
+        jmi_clients = new javax.swing.JMenuItem();
+        jmi_branch = new javax.swing.JMenuItem();
+        jmi_supplier = new javax.swing.JMenuItem();
+        jm_function = new javax.swing.JMenu();
+        jmi_vents = new javax.swing.JMenuItem();
+        jmi_Buy = new javax.swing.JMenuItem();
+        jm_options = new javax.swing.JMenu();
+        jmi_about = new javax.swing.JMenuItem();
+        jmi_backup = new javax.swing.JMenuItem();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jb_close.setBackground(new java.awt.Color(255, 0, 0));
+        jb_close.setForeground(new java.awt.Color(255, 255, 255));
+        jb_close.setText("X");
+        jb_close.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jb_close.setBorderPainted(false);
+        jb_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jb_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, 40, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backgorund.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(950, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 469));
+
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenuBar1.setForeground(new java.awt.Color(204, 204, 204));
+
+        jm_components.setBackground(new java.awt.Color(51, 51, 51));
+        jm_components.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jm_components.setForeground(new java.awt.Color(204, 204, 204));
+        jm_components.setText("Componentes");
+        jm_components.setBorderPainted(true);
+
+        jmi_product.setText("Productos");
+        jm_components.add(jmi_product);
+
+        jmi_employee.setText("Empleados");
+        jmi_employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_employeeActionPerformed(evt);
+            }
+        });
+        jm_components.add(jmi_employee);
+
+        jmi_clients.setText("Clientes");
+        jm_components.add(jmi_clients);
+
+        jmi_branch.setText("Sucursales");
+        jm_components.add(jmi_branch);
+
+        jmi_supplier.setText("Proveedores");
+        jm_components.add(jmi_supplier);
+
+        jMenuBar1.add(jm_components);
+
+        jm_function.setBackground(new java.awt.Color(51, 51, 51));
+        jm_function.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jm_function.setForeground(new java.awt.Color(204, 204, 204));
+        jm_function.setText("Funciones");
+
+        jmi_vents.setText("Ventas");
+        jm_function.add(jmi_vents);
+
+        jmi_Buy.setText("Compras");
+        jm_function.add(jmi_Buy);
+
+        jMenuBar1.add(jm_function);
+
+        jm_options.setBackground(new java.awt.Color(51, 51, 51));
+        jm_options.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jm_options.setForeground(new java.awt.Color(204, 204, 204));
+        jm_options.setText("Opciones");
+
+        jmi_about.setText("Acerca de");
+        jm_options.add(jmi_about);
+
+        jmi_backup.setText("Respaldo");
+        jm_options.add(jmi_backup);
+
+        jMenuBar1.add(jm_options);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmi_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_employeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_employeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +161,20 @@ public class viewMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    public javax.swing.JButton jb_close;
+    public javax.swing.JMenu jm_components;
+    public javax.swing.JMenu jm_function;
+    public javax.swing.JMenu jm_options;
+    public javax.swing.JMenuItem jmi_Buy;
+    private javax.swing.JMenuItem jmi_about;
+    private javax.swing.JMenuItem jmi_backup;
+    public javax.swing.JMenuItem jmi_branch;
+    public javax.swing.JMenuItem jmi_clients;
+    public javax.swing.JMenuItem jmi_employee;
+    public javax.swing.JMenuItem jmi_product;
+    public javax.swing.JMenuItem jmi_supplier;
+    public javax.swing.JMenuItem jmi_vents;
     // End of variables declaration//GEN-END:variables
 }

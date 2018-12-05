@@ -5,11 +5,10 @@
  */
 package models;
 
-import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class pane_model_products extends Conexion {
+public class pane_model_products {
 
     private int id_producto;
     private String nombre_producto;
@@ -80,12 +79,12 @@ public class pane_model_products extends Conexion {
 
     public boolean registrar() {
         PreparedStatement ps = null;
-        Connection con = getConexion();
+       
 
         String sql = "INSERT INTO productos (nombre_producto,tipo_producto,marca,precio_venta,sku,lote) VALUES (?,?,?,?,?,?)";
 
         try {
-            ps = con.prepareStatement(sql);
+            
             ps.setString(1, getNombre_producto());
             ps.setString(2, getTipo_producto());
             ps.setString(3, getMarca());
@@ -99,7 +98,7 @@ public class pane_model_products extends Conexion {
             return false;
         } finally {
             try {
-                con.close();
+                
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -109,12 +108,12 @@ public class pane_model_products extends Conexion {
 
     public boolean modificar() {
         PreparedStatement ps = null;
-        Connection con = getConexion();
+        
 
         String sql = "UPDATE productos SET nombre_producto=?,tipo_producto=?,marca=?,precio_venta=?,sku=?,lote=?,fecha_entrada=? WHERE id_producto=?";
 
         try {
-            ps = con.prepareStatement(sql);
+            
             ps.setString(1, getNombre_producto());
             ps.setString(2, getTipo_producto());
             ps.setString(3, getMarca());
@@ -129,7 +128,7 @@ public class pane_model_products extends Conexion {
             return false;
         } finally {
             try {
-                con.close();
+                
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -139,12 +138,11 @@ public class pane_model_products extends Conexion {
 
      public boolean eleiminar() {
         PreparedStatement ps = null;
-        Connection con = getConexion();
+        
 
         String sql = "DELATE FROM productos  WHERE id_producto=?";
 
         try {
-            ps = con.prepareStatement(sql);
             ps.setString(1, getNombre_producto());
             ps.setString(2, getTipo_producto());
             ps.setString(3, getMarca());
@@ -159,7 +157,6 @@ public class pane_model_products extends Conexion {
             return false;
         } finally {
             try {
-                con.close();
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -168,13 +165,11 @@ public class pane_model_products extends Conexion {
     }
      public boolean buscar() {
         PreparedStatement ps = null;
-        Connection con = getConexion();
          ResultSet rs = null;
 
         String sql = "DELATE FROM productos  WHERE =nombre_producto";
 
         try {
-            ps = con.prepareStatement(sql);
             ps.setString(1, getNombre_producto());
             rs = ps.executeQuery();
             
@@ -194,7 +189,6 @@ public class pane_model_products extends Conexion {
             return false;
         } finally {
             try {
-                con.close();
             } catch (Exception e) {
                 System.err.println(e);
             }

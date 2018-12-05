@@ -36,7 +36,6 @@ public class pane_model_employee {
     private Integer telefono;
     private String tipo_empleado;
     
-    modelMain modelmain;
     
     /**
      * @return the ID

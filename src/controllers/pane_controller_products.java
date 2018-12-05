@@ -17,8 +17,8 @@ import views.pane_view_products;
  * @author DELL
  */
 public class pane_controller_products implements ActionListener{
-   private pane_model_products modelo;
-   private pane_view_products vista;
+   public pane_model_products modelo;
+   public pane_view_products vista;
 
     public pane_controller_products(pane_model_products modelo, pane_view_products vista) {
         this.modelo = modelo;

@@ -50,7 +50,7 @@ public class pane_view_employee extends javax.swing.JPanel {
         jb_next = new javax.swing.JButton();
         jb_prev = new javax.swing.JButton();
         jp_crud = new javax.swing.JPanel();
-        jb_añadir = new javax.swing.JButton();
+        jb_anadir = new javax.swing.JButton();
         jb_modificar = new javax.swing.JButton();
         jb_eliminar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -134,7 +134,7 @@ public class pane_view_employee extends javax.swing.JPanel {
         jp_crud.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_crud.setForeground(new java.awt.Color(255, 102, 0));
 
-        jb_añadir.setText("Añadir");
+        jb_anadir.setText("Añadir");
 
         jb_modificar.setText("Modificar");
 
@@ -149,14 +149,14 @@ public class pane_view_employee extends javax.swing.JPanel {
                 .addGroup(jp_crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jb_eliminar)
                     .addComponent(jb_modificar)
-                    .addComponent(jb_añadir))
+                    .addComponent(jb_anadir))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         jp_crudLayout.setVerticalGroup(
             jp_crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_crudLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jb_añadir)
+                .addComponent(jb_anadir)
                 .addGap(18, 18, 18)
                 .addComponent(jb_modificar)
                 .addGap(18, 18, 18)
@@ -347,7 +347,7 @@ public class pane_view_employee extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JButton jb_añadir;
+    public javax.swing.JButton jb_anadir;
     public javax.swing.JButton jb_buscar;
     public javax.swing.JButton jb_eliminar;
     public javax.swing.JButton jb_modificar;

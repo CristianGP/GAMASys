@@ -162,8 +162,6 @@ public class pane_controller_supplier implements ActionListener {
         Método para inicializar los componentes.
      */
     private void initComponents() {
-        view_supplier.setTitle("Proveedores");
-        view_supplier.setLocationRelativeTo(null);
         view_supplier.setVisible(true);
         cargar();
         setAction();

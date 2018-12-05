@@ -34,7 +34,6 @@ public class pane_model_supplier {
     private String colonia;
     private String ciudad;
     private String estado;
-    modelMain modelmain;
     /*
         Getter y Setter de cada variable
     */
