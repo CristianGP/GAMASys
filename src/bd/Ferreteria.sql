@@ -3,20 +3,13 @@ create database ferreteria;
 use ferreteria;
 
 create table clientes(
-id_cliente int not null auto_increment primary key,
-nombre_cliente char(50) not null,
-apellido_paterno char(50) not null,
-apellido_materno char(50) not null,
-telefono int(15) not null,
-rfc varchar(15) not null,
-calle varchar(50) not null,
-colonia varchar(50) not null,
-no_interrior int(5) not null,
-no_exterrior int(5) not null,
-cp int(10) not null,
-email varchar(50) not null,
-ciudad varchar(50) not null,
-pais varchar(50) not null);
+id_clie  int auto_increment primary key,
+nombre_clie varchar(60) not null,
+telefono_clie varchar(10) not null,
+calle_clie char(30) not null,
+colonia_clie char(15) not null,
+ciudad_clie char(15) not null,
+estado_clie char(15) not null);
 
 create table sucursales(
 id_sucursal int(10) auto_increment primary key,
@@ -122,13 +115,3 @@ id_producto int(11) not null,
 id_venta int(11) not null,
 foreign key (id_producto) references productos(id_producto),
 foreign key (id_venta) references ventas(id_venta));
-
-
-
-
-
-
-
-
-
-
