@@ -13,11 +13,8 @@ import javax.swing.JFrame;
 public class pane_controller_customers implements ActionListener{
 
     JFrame vistaCrud = new JFrame();
-    Customers modeloCrud = new Customers();
     
-    public pane_controller_customers(JFrame vistaCrud, Customers modeloCrud){
-        this.modeloCrud = modeloCrud;
-    }
+    
     
     public void actionPerformed(ActionEvent e) {
         

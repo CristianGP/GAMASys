@@ -31,8 +31,9 @@ public class mainMain {
         
         Object[] paneles = new Object[3];
         paneles[0] = controller_products;
-        paneles[1] = controller_supplier;
-        paneles[2] = controller_employee;
+        paneles[1] = controller_employee;
+        paneles[2] = controller_supplier;
+        
          
         viewMain view_main = new viewMain();
         pane_controller_main controller_main = new pane_controller_main(view_main, paneles);
