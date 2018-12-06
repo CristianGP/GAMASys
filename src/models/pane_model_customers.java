@@ -1,79 +1,56 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package models;
 
 /**
  *
  * @author ManuelAlonsoMH
  */
+import bd.BD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import views.pane_view_customers;
+
 public class pane_model_customers {
-    String id_cliente;
-    String nombre_cliente;
-    String apellido_paterno;
-    String telefono;
-    String rfc;
-    String calle;
-    String colonia;
-    String no_interrior;
-    String no_exterrior;
-    String cp;
-    String email;
-    String ciudad;
-    String pais; 
     
-    public pane_model_customers(){
-        id_cliente="";
-        nombre_cliente="";
-        apellido_paterno="";
-        telefono="";
-        rfc="";
-        calle="";
-        colonia="";
-        no_interrior="";
-        no_exterrior="";
-        cp="";
-        email="";
-        ciudad="";
-        pais=""; 
+    private Statement st;
+    private PreparedStatement pst;
+    private ResultSet rs;
+    pane_view_customers view_customers = new pane_view_customers();
+    
+    
+    private String ID;
+
+    private String nombre;
+    private String calle;
+    private String telefono;
+    private String colonia;
+    private String ciudad;
+    private String estado;
+    modelMain modelmain;
+    /*
+        Getter y Setter de cada variable
+    */
+    public String getID() {
+        return ID;
     }
 
-    public String getId_cliente() {
-        return id_cliente;
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
-    }
-
-    public String getNombre_cliente() {
-        return nombre_cliente;
-    }
-
-    public void setNombre_cliente(String nombre_cliente) {
-        this.nombre_cliente = nombre_cliente;
-    }
-
-    public String getApellido_paterno() {
-        return apellido_paterno;
-    }
-
-    public void setApellido_paterno(String apellido_paterno) {
-        this.apellido_paterno = apellido_paterno;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getRfc() {
-        return rfc;
-    }
-
-    public void setRfc(String rfc) {
-        this.rfc = rfc;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCalle() {
@@ -84,44 +61,20 @@ public class pane_model_customers {
         this.calle = calle;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public String getColonia() {
         return colonia;
     }
 
     public void setColonia(String colonia) {
         this.colonia = colonia;
-    }
-
-    public String getNo_interrior() {
-        return no_interrior;
-    }
-
-    public void setNo_interrior(String no_interrior) {
-        this.no_interrior = no_interrior;
-    }
-
-    public String getNo_exterrior() {
-        return no_exterrior;
-    }
-
-    public void setNo_exterrior(String no_exterrior) {
-        this.no_exterrior = no_exterrior;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getCiudad() {
@@ -132,74 +85,112 @@ public class pane_model_customers {
         this.ciudad = ciudad;
     }
 
-    public String getPais() {
-        return pais;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    void setDni(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDid_cliente(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDnombre_cliente(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDapellido_paterno(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDapellido_materno(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDtelefono(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDrfc(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDcalle(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDcolonia(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDno_exterrior(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDno_interrior(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDcp(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDemail(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDciudad(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setDpais(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
-
+    
+    /*
+    Método agregar un proveedor, donde se hace la sentencia de sql para insertar registros
+    dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
+    muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
+    Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
+    */
+    public void registerCustomers(){
+        String insert = ("INSERT INTO clientes (nombre_clie, telefono_clie, calle_clie, colonia_clie, ciudad_clie, estado_clie) VALUES (?,?,?,?,?,?);");
+        BD DataBase = new BD();
+        Connection con = DataBase.getConnection();
+        
+        try {
+            pst = (PreparedStatement) con.prepareStatement(insert); 
+            pst.setString(1, this.getNombre());
+            pst.setString(2, this.getTelefono());
+            pst.setString(3, this.getCalle());
+            pst.setString(4, this.getColonia());
+            pst.setString(5, this.getCiudad());
+            pst.setString(6, this.getEstado());
+            if (this.getNombre().isEmpty() || 
+                this.getTelefono().isEmpty() || 
+                this.getCalle().isEmpty() || 
+                this.getColonia().isEmpty() || 
+                this.getCiudad().isEmpty() || 
+                this.getEstado().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");
+            }else{
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se insertó el registro");
+            }
+            }catch (SQLException ex){
+                JOptionPane.showMessageDialog(null, "No se pudo insertar el registro" +ex);
+            }catch (NullPointerException err) {
+                System.err.println("NullPointer:  " + err.getMessage());
+            }
+        }
+    
+    /*
+        Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros
+        dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
+        muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
+        Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
+    */
+    public void modifyCustomers(){
+        String update = ("UPDATE clientes SET nombre_clie = ?, telefono_clie = ?, calle_clie = ?, colonia_clie = ?, ciudad_clie = ?, estado_clie = ? WHERE id_clie = ? ;");
+        BD DataBase = new BD();
+        Connection con = DataBase.getConnection();
+        try {
+            pst = (PreparedStatement) con.prepareStatement(update);
+            pst.setString(1, this.getNombre());
+            pst.setString(2, this.getTelefono());
+            pst.setString(3, this.getCalle());
+            pst.setString(4, this.getColonia());
+            pst.setString(5, this.getCiudad());
+            pst.setString(6, this.getEstado());
+            pst.setString(7, this.getID());
+            if (this.getNombre().isEmpty() || 
+                this.getTelefono().isEmpty() || 
+                this.getCalle().isEmpty() || 
+                this.getColonia().isEmpty() || 
+                this.getCiudad().isEmpty() || 
+                this.getEstado().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Los campos no deben quedar vacíos");    
+            }else{
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se actualizó el registro");
+            }
+        }catch(SQLException ex){ 
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+        }catch (NullPointerException err) {
+            JOptionPane.showMessageDialog(null, "NullPointer:  " + err.getMessage());
+        }
+    }
+    
+    /*
+        Método para eliminar al proveedor selccionado en la tabla.
+    */
+    public void deleteCustomers(){          
+        int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
+        if(eliminar == 0){  
+            String delete = ("DELETE FROM clientes WHERE id_clie = ? ;");
+            BD DataBase = new BD();
+            Connection con = DataBase.getConnection();
+            try{
+                pst = (PreparedStatement) con.prepareStatement(delete);
+                pst.setString(1, this.getID());
+                System.out.println("Eliminando a: " + this.getID());
+                if (this.getID() == "0"){
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar este registro");
+                }else{
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se eliminó el registro");
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar" + ex.getMessage());
+            }
+        }                         
+    }
 }
