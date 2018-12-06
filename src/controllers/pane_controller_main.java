@@ -58,7 +58,7 @@ public class pane_controller_main implements ActionListener{
 
     private void setControllers() {
         controller_products = (pane_controller_products) paneles[0];
-        controller_employee = (pane_controller_employee) paneles[1];
-        controller_supplier = (pane_controller_supplier) paneles[2];
+        /*controller_employee = (pane_controller_employee) paneles[1];*/
+        controller_supplier = (pane_controller_supplier) paneles[1];
     }
 }

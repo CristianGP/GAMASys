@@ -21,9 +21,9 @@ public class mainMain {
         pane_view_products view_products = new pane_view_products();
         pane_controller_products controller_products = new pane_controller_products(model_products, view_products);
         
-        pane_model_employee model_employee = new pane_model_employee();
+        /*pane_model_employee model_employee = new pane_model_employee();
         pane_view_employee view_employee = new pane_view_employee();
-        pane_controller_employee controller_employee = new pane_controller_employee();
+        pane_controller_employee controller_employee = new pane_controller_employee();*/
         
         pane_model_supplier model_supplier = new pane_model_supplier();
         pane_view_supplier view_supplier = new pane_view_supplier();
@@ -31,8 +31,7 @@ public class mainMain {
         
         Object[] paneles = new Object[3];
         paneles[0] = controller_products;
-        paneles[1] = controller_employee;
-        paneles[2] = controller_supplier;
+        paneles[1] = controller_supplier;
         
         viewMain view_main = new viewMain();
         pane_controller_main controller_main = new pane_controller_main(view_main, paneles);
