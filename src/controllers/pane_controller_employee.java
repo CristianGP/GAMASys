@@ -8,11 +8,19 @@ import views.pane_view_employee;
  *
  * @author Sebastián
  */
-    public class pane_controller_employee {
+    public class pane_controller_employee  {
    
     public pane_model_employee m_employee;
     public pane_view_employee v_employee;
+   
     
+    
+     public pane_controller_employee(pane_view_employee v_employee, pane_model_employee m_employee){
+        this.m_employee= m_employee;
+        this.v_employee= v_employee;
+        setActionListener();
+        initDB();
+    }  
     ActionListener actionListener =  new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -34,11 +42,7 @@ import views.pane_view_employee;
         }
     };
     
-    public pane_controller_employee(){
-        
-        setActionListener();
-        initDB();
-    }   
+    
 
     private void initDB() {
         
