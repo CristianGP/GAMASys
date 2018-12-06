@@ -1,6 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package views;
 
+/**
+ *
+ * @author ManuelAlonsoMH
+ */
 public class pane_view_customers extends javax.swing.JFrame {
 
     /**
@@ -19,44 +27,46 @@ public class pane_view_customers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jp_datos = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jtf_name = new javax.swing.JTextField();
         jtf_phone = new javax.swing.JTextField();
         jtf_street = new javax.swing.JTextField();
-        jtf_pc = new javax.swing.JTextField();
+        jtf_colony = new javax.swing.JTextField();
         jtf_city = new javax.swing.JTextField();
         jtf_state = new javax.swing.JTextField();
-        jp_crud = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jb_add = new javax.swing.JButton();
         jb_modify = new javax.swing.JButton();
         jb_delete = new javax.swing.JButton();
         jb_new = new javax.swing.JButton();
-        jl_name = new javax.swing.JLabel();
-        jl_phone = new javax.swing.JLabel();
-        jl_street = new javax.swing.JLabel();
-        jl_zip_code = new javax.swing.JLabel();
-        jl_city = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jtf_name = new javax.swing.JTextField();
         jb_search = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jt_Datos = new javax.swing.JTable();
+        jt_customers = new javax.swing.JTable();
         jcb_search = new javax.swing.JComboBox<>();
+        jtf_search = new javax.swing.JTextField();
         jp_titulo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jtf_id_customers = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jp_datos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jp_datos.add(jtf_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 122, -1));
-        jp_datos.add(jtf_street, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 122, -1));
-        jp_datos.add(jtf_pc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 122, -1));
-        jp_datos.add(jtf_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 122, -1));
-        jp_datos.add(jtf_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 122, -1));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jtf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 122, -1));
+        jPanel2.add(jtf_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 122, -1));
+        jPanel2.add(jtf_street, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 122, -1));
+        jPanel2.add(jtf_colony, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 122, -1));
+        jPanel2.add(jtf_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 122, -1));
+        jPanel2.add(jtf_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 122, -1));
 
-        jp_crud.setBackground(new java.awt.Color(255, 102, 0));
-        jp_crud.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jp_crud.setForeground(new java.awt.Color(255, 102, 0));
-        jp_crud.setToolTipText("");
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 255));
 
         jb_add.setText("Agregar");
 
@@ -66,22 +76,22 @@ public class pane_view_customers extends javax.swing.JFrame {
 
         jb_new.setText("Nuevo");
 
-        javax.swing.GroupLayout jp_crudLayout = new javax.swing.GroupLayout(jp_crud);
-        jp_crud.setLayout(jp_crudLayout);
-        jp_crudLayout.setHorizontalGroup(
-            jp_crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_crudLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
-                .addGroup(jp_crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jb_modify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_new, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
-        jp_crudLayout.setVerticalGroup(
-            jp_crudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_crudLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jb_add)
                 .addGap(28, 28, 28)
@@ -93,50 +103,48 @@ public class pane_view_customers extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        jp_datos.add(jp_crud, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
-        jl_name.setText("Nombre");
-        jp_datos.add(jl_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        jLabel1.setText("Nombre");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        jl_phone.setText("Teléfono");
-        jp_datos.add(jl_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jLabel2.setText("Teléfono");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
-        jl_street.setText("Calle");
-        jp_datos.add(jl_street, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        jLabel3.setText("Calle");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        jl_zip_code.setText("Código Postal");
-        jp_datos.add(jl_zip_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        jLabel4.setText("Colonia");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        jl_city.setText("Ciudad");
-        jp_datos.add(jl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
+        jLabel5.setText("Ciudad");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jLabel6.setText("Estado");
-        jp_datos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
-        jp_datos.add(jtf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 122, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jb_search.setText("Buscar");
-        jp_datos.add(jb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
+        jPanel2.add(jb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jt_Datos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jt_Datos.setModel(new javax.swing.table.DefaultTableModel(
+        jt_customers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jt_customers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Teléfono", "Calle", "Codigo Postal", "Ciudad", "Estado"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jt_Datos);
+        jScrollPane1.setViewportView(jt_customers);
 
-        jp_datos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 511, 91));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 511, 90));
 
-        jcb_search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Teléfono", "Calle", "Código Postal Ciudad", "Estado" }));
-        jp_datos.add(jcb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 211, -1));
+        jcb_search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Teléfono", "Calle", "Ciudad", "Estado" }));
+        jPanel2.add(jcb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 211, -1));
+        jPanel2.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 170, -1));
 
         jp_titulo.setBackground(new java.awt.Color(255, 102, 0));
 
@@ -149,39 +157,46 @@ public class pane_view_customers extends javax.swing.JFrame {
         jp_tituloLayout.setHorizontalGroup(
             jp_tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_tituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(187, 187, 187))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtf_id_customers, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
         );
         jp_tituloLayout.setVerticalGroup(
             jp_tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_tituloLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
             .addGroup(jp_tituloLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel7)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jtf_id_customers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jp_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
-                    .addComponent(jp_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jp_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jp_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jp_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 64, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jp_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 463, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     /**
      * @param args the command line arguments
      */
@@ -211,10 +226,6 @@ public class pane_view_customers extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -225,28 +236,30 @@ public class pane_view_customers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton jb_add;
     public javax.swing.JButton jb_delete;
     public javax.swing.JButton jb_modify;
     public javax.swing.JButton jb_new;
-    private javax.swing.JButton jb_search;
-    private javax.swing.JComboBox<String> jcb_search;
-    private javax.swing.JLabel jl_city;
-    private javax.swing.JLabel jl_name;
-    private javax.swing.JLabel jl_phone;
-    private javax.swing.JLabel jl_street;
-    private javax.swing.JLabel jl_zip_code;
-    private javax.swing.JPanel jp_crud;
-    private javax.swing.JPanel jp_datos;
+    public javax.swing.JButton jb_search;
+    public javax.swing.JComboBox<String> jcb_search;
     private javax.swing.JPanel jp_titulo;
-    private javax.swing.JTable jt_Datos;
+    public javax.swing.JTable jt_customers;
     public javax.swing.JTextField jtf_city;
+    public javax.swing.JTextField jtf_colony;
+    public javax.swing.JTextField jtf_id_customers;
     public javax.swing.JTextField jtf_name;
-    public javax.swing.JTextField jtf_pc;
     public javax.swing.JTextField jtf_phone;
+    public javax.swing.JTextField jtf_search;
     public javax.swing.JTextField jtf_state;
     public javax.swing.JTextField jtf_street;
     // End of variables declaration//GEN-END:variables
