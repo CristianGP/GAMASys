@@ -11,9 +11,7 @@ package views;
  */
 public class pane_view_customers extends javax.swing.JFrame {
 
-    /**
-     * Creates new form viewSupplier
-     */
+    
     public pane_view_customers() {
         initComponents();
     }

@@ -34,7 +34,7 @@ public class pane_model_customers {
     private String colonia;
     private String ciudad;
     private String estado;
-    modelMain modelmain;
+    
     /*
         Getter y Setter de cada variable
     */
@@ -95,12 +95,6 @@ public class pane_model_customers {
     
     
     
-    /*
-    Método agregar un proveedor, donde se hace la sentencia de sql para insertar registros
-    dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
-    muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
-    Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
-    */
     public void registerCustomers(){
         String insert = ("INSERT INTO clientes (nombre_clie, telefono_clie, calle_clie, colonia_clie, ciudad_clie, estado_clie) VALUES (?,?,?,?,?,?);");
         BD DataBase = new BD();
@@ -132,12 +126,7 @@ public class pane_model_customers {
             }
         }
     
-    /*
-        Método modificar un proveedor, donde se hace la sentencia de sql para modificar registros
-        dentro de la tabla proveedores de la base de datos, validando si están vacíos que le 
-        muestre un mensaje diciendo que los campos no pueden quedar vacíos. 
-        Si los capos no están vacíos entonces mostrará un mensaje que el registro ha sido insertado.
-    */
+
     public void modifyCustomers(){
         String update = ("UPDATE clientes SET nombre_clie = ?, telefono_clie = ?, calle_clie = ?, colonia_clie = ?, ciudad_clie = ?, estado_clie = ? WHERE id_clie = ? ;");
         BD DataBase = new BD();
@@ -169,9 +158,7 @@ public class pane_model_customers {
         }
     }
     
-    /*
-        Método para eliminar al proveedor selccionado en la tabla.
-    */
+
     public void deleteCustomers(){          
         int eliminar = JOptionPane.showConfirmDialog(null, "Quieres eliminar este registro?", "Eliminar Registro", JOptionPane.YES_NO_OPTION);
         if(eliminar == 0){  

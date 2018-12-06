@@ -48,7 +48,7 @@ public class pane_controller_customers implements ActionListener {
         if (e.getSource() == view_customers.jb_add) {
             /*
                 Editando las variabes de getter y setter para el modelo y su método 
-                para registrar al proveedor
+                para registrar al cliente
              */
             model_customers.setNombre(view_customers.jtf_name.getText());
             model_customers.setTelefono(view_customers.jtf_phone.getText());
@@ -79,7 +79,7 @@ public class pane_controller_customers implements ActionListener {
         } else if (e.getSource() == view_customers.jb_delete) {
             /*
                 Editando las variabes de getter y setter para el modelo y su método 
-                para registrar al proveedor
+                para registrar al cliente
              */
             model_customers.setID(view_customers.jtf_id_customers.getText());
             model_customers.deleteCustomers();
@@ -103,7 +103,7 @@ public class pane_controller_customers implements ActionListener {
         } else if (e.getSource() == view_customers.jb_modify) {
             /*
                 Editando las variabes de getter y setter para el modelo y su método 
-                para modificar al proveedor
+                para modificar al cliente
              */
             model_customers.setNombre(view_customers.jtf_name.getText());
             model_customers.setTelefono(view_customers.jtf_phone.getText());
@@ -222,7 +222,7 @@ public class pane_controller_customers implements ActionListener {
     }
 
     /*
-        Método para buscar un proveedor por nombre, hace una sentencia de sql y muestra los datos en
+        Método para buscar un cliente por nombre, hace una sentencia de sql y muestra los datos en
         la tabla
      */
     private void searchByName() {
@@ -239,7 +239,7 @@ public class pane_controller_customers implements ActionListener {
     }
 
     /*
-        Método para buscar un proveedor por calle, hace una sentencia de sql y muestra los datos en
+        Método para buscar un cliente por calle, hace una sentencia de sql y muestra los datos en
         la tabla
      */
     private void searchByStreet() {
@@ -273,7 +273,7 @@ public class pane_controller_customers implements ActionListener {
     }
 
     /*
-        Método para buscar un proveedor por teléfono, hace una sentencia de sql y muestra los datos en
+        Método para buscar un cliente por teléfono, hace una sentencia de sql y muestra los datos en
         la tabla
      */
     private void searchByPhone() {
@@ -285,12 +285,12 @@ public class pane_controller_customers implements ActionListener {
             pst.setString(1, view_customers.jtf_search.getText());
             pst.executeUpdate();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+            JOptionPane.showMessageDialog(null, "No se encontró cliente");
         }
     }
 
     /*
-        Método para buscar un proveedor por estado, hace una sentencia de sql y muestra los datos en
+        Método para buscar un cliente por estado, hace una sentencia de sql y muestra los datos en
         la tabla
      */
     private void searchByState() {
@@ -307,7 +307,7 @@ public class pane_controller_customers implements ActionListener {
     }
 
     /*
-        Método para buscar un proveedor por ciudad, hace una sentencia de sql y muestra los datos en
+        Método para buscar un cliente por ciudad, hace una sentencia de sql y muestra los datos en
         la tabla
      */
     private void searchByCity() {
