@@ -162,8 +162,6 @@ public class pane_controller_customers implements ActionListener {
         Método para inicializar los componentes.
      */
     private void initComponents() {
-        view_customers.setTitle("Clientes");
-        view_customers.setLocationRelativeTo(null);
         view_customers.setVisible(true);
         cargar();
         setAction();

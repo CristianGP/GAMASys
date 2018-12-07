@@ -21,6 +21,7 @@ public class pane_controller_main implements ActionListener{
     private pane_controller_employee controller_employee;
     private pane_controller_products controller_products;
     private pane_controller_supplier controller_supplier;
+    private pane_controller_customers controller_customers;
     
     public pane_controller_main (viewMain view_main, Object[] paneles){
         this.view_main = view_main;
@@ -29,6 +30,7 @@ public class pane_controller_main implements ActionListener{
         view_main.jmi_employee.addActionListener(this);
         view_main.jmi_product.addActionListener(this);
         view_main.jmi_supplier.addActionListener(this);
+        view_main.jmi_clients.addActionListener(this);
         initComponents();
         
     }
@@ -49,6 +51,12 @@ public class pane_controller_main implements ActionListener{
             view_main.revalidate();
             view_main.repaint();
         }
+         else if (e.getSource() == view_main.jmi_clients){
+            view_main.setContentPane(controller_customers.view_customers);
+            view_main.revalidate();
+            view_main.repaint();
+        }
+        
     }
     private void initComponents() {
         view_main.setTitle("Ferretería");
@@ -60,5 +68,6 @@ public class pane_controller_main implements ActionListener{
         controller_products = (pane_controller_products) paneles[0];
         controller_employee = (pane_controller_employee) paneles[1];
         controller_supplier = (pane_controller_supplier) paneles[2];
+        controller_customers = (pane_controller_customers) paneles[3];
     }
 }

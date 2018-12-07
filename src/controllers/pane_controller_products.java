@@ -30,8 +30,7 @@ public class pane_controller_products implements ActionListener{
     }
    
        public void initComponents() {
-        vista.setLocationRelativeTo(null);
-        vista.setTitle("Productos");
+       
         vista.setVisible(true);
         vista.jtf_id.setVisible(false);
     }

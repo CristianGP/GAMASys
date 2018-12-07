@@ -29,10 +29,15 @@ public class mainMain {
         pane_view_supplier view_supplier = new pane_view_supplier();
         pane_controller_supplier controller_supplier = new pane_controller_supplier(view_supplier, model_supplier);
         
-        Object[] paneles = new Object[3];
+        pane_model_customers model_customers = new pane_model_customers();
+        pane_view_customers view_customers = new pane_view_customers();
+        pane_controller_customers controller_customers = new pane_controller_customers(view_customers, model_customers);
+        
+        Object[] paneles = new Object[4];
         paneles[0] = controller_products;
         paneles[1] = controller_employee;
         paneles[2] = controller_supplier;
+        paneles[3] = controller_customers;
         
          
         viewMain view_main = new viewMain();
