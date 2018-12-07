@@ -50,9 +50,12 @@ public class pane_view_supplier extends javax.swing.JPanel {
         jt_supplier = new javax.swing.JTable();
         jcb_search = new javax.swing.JComboBox<>();
         jtf_search = new javax.swing.JTextField();
+        jp_titulo2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         jtf_id_supplier = new javax.swing.JTextField();
 
-        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jtf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 122, -1));
         jPanel2.add(jtf_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 122, -1));
@@ -61,7 +64,7 @@ public class pane_view_supplier extends javax.swing.JPanel {
         jPanel2.add(jtf_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 122, -1));
         jPanel2.add(jtf_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 122, -1));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
         jPanel1.setForeground(new java.awt.Color(51, 51, 255));
 
         jb_add.setText("Agregar");
@@ -140,28 +143,60 @@ public class pane_view_supplier extends javax.swing.JPanel {
         jcb_search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Teléfono", "Calle", "Ciudad", "Estado" }));
         jPanel2.add(jcb_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 211, -1));
         jPanel2.add(jtf_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 170, -1));
-        jPanel2.add(jtf_id_supplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 60, -1));
+
+        jp_titulo2.setBackground(new java.awt.Color(255, 102, 0));
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Proveedores");
+
+        javax.swing.GroupLayout jp_titulo2Layout = new javax.swing.GroupLayout(jp_titulo2);
+        jp_titulo2.setLayout(jp_titulo2Layout);
+        jp_titulo2Layout.setHorizontalGroup(
+            jp_titulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titulo2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jtf_id_supplier, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(212, 212, 212))
+        );
+        jp_titulo2Layout.setVerticalGroup(
+            jp_titulo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_titulo2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+            .addGroup(jp_titulo2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jtf_id_supplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jp_titulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jp_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -176,6 +211,7 @@ public class pane_view_supplier extends javax.swing.JPanel {
     public javax.swing.JButton jb_new;
     public javax.swing.JButton jb_search;
     public javax.swing.JComboBox<String> jcb_search;
+    private javax.swing.JPanel jp_titulo2;
     public javax.swing.JTable jt_supplier;
     public javax.swing.JTextField jtf_city;
     public javax.swing.JTextField jtf_colony;

@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/controllers/pane_controller_customers.java</file>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/views/pane_view_customers.java</file>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/controllers/pane_controller_products.java</file>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/bd/Ferreteria.sql</file>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/models/pane_model_customers.java</file>
-            <file>file:/C:/Users/MANUEL/Downloads/Proyecto0/GAMASys/src/controllers/pane_controller_main.java</file>
+            <file>file:/C:/Users/MANUEL/Downloads/Proyecto10/GAMASys/src/views/pane_view_customers.java</file>
+            <file>file:/C:/Users/MANUEL/Downloads/Proyecto10/GAMASys/src/views/pane_view_products.java</file>
+            <file>file:/C:/Users/MANUEL/Downloads/Proyecto10/GAMASys/src/views/pane_view_supplier.java</file>
+            <file>file:/C:/Users/MANUEL/Downloads/Proyecto10/GAMASys/src/views/pane_view_employee.java</file>
         </group>
     </open-files>
 </project-private>
